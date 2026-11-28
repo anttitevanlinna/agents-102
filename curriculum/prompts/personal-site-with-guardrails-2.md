@@ -11,12 +11,8 @@ produces:
     location: module-1/site.html
     note: StoryBrand-tuned revision in place
 ---
-Apply Donald Miller's StoryBrand framework to the COLLEAGUE-HELP SECTION of my personal site, but tuned for ONE goal: when a colleague reads it, they think "this is the person I want to work with more, on the things they're great at." Not buying a service. Not booking a call. A colleague relationship.
+Rework the section of my site about how I help colleagues, using Donald Miller's StoryBrand. The page stays about me: my name in the headline, my current work up front. Only this one section changes. A colleague who reads it should think: this is the person I want to work with more, on the things they're great at.
 
-Important: this is a PERSONAL site. The protagonist of the SITE is me: my name, my identity, my actual work. The headline is about me, not a question to the visitor. The StoryBrand tune shapes how I describe the help relationship; it does NOT restructure the whole site to make the colleague the hero of the page.
+Use five beats: Character (the colleague), Problem (the work they're stuck on or want more of), Guide (why I'm their natural ally), Plan (what working with me is like), Success (what has changed for them a year from now). Leave out Stakes and Call to Action. Nobody is buying anything.
 
-Use these StoryBrand beats for the help section: Character (the colleague, hero of the help relationship, not of the site), Problem (what work they're stuck on or want more of, that I see clearly), Guide (what makes me their natural ally), Plan (what working with me actually feels like; low-friction, informal is fine), Success (what it looks like a year later when we've worked together more: what we built, what changed for them).
-
-Skip Stakes and Call-to-Action: no fear-framing, no "book a chat." The site's vibe is the CTA.
-
-Walk me through the five beats. Ask one beat, wait for my answer, then ask the next. Do not show me the remaining beats. Take whatever shape of answer I give. After the fifth answer, regenerate `module-1/site.html`. Keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list, but in the voice. Keep the edge in my answers; don't soften.
+Ask me one beat at a time and wait for each answer. After the fifth, regenerate `module-1/site.html`, with the section written as prose in my voice, as sharp as my answers.

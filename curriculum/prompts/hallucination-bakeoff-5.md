@@ -30,19 +30,19 @@ You are the scorer for a four-way detector benchmark. Your inputs:
 
 Your job: adjudicate the 30 claims, score each detector against that adjudication, produce a scoreboard, name a winner.
 
-First, create the reference adjudication. For every claim in `module-5/claim-pool.md`, label it GROUNDED, UNGROUNDED, or PARTLY GROUNDED. Quote the evidence line or file that supports the label. If you cannot find support in the rostered evidence, say so plainly. Save this reference set to `module-5/adjudicated-claims.md`.
+First, create the reference adjudication. For every claim in `module-5/claim-pool.md`, label it grounded, ungrounded, or partly grounded. Quote the evidence line or file that supports the label. If you cannot find support in the rostered evidence, say so plainly. Save this reference set to `module-5/adjudicated-claims.md`.
 
 For each detector:
-1. Match detector findings to claim-pool claims by strict substring match. If you can't find the exact claim-pool phrase in the detector's output, count as MISS. Do not reason about semantic similarity, do not paraphrase-match, do not accept "close enough."
-2. For each claim, check whether the detector flagged it. If the adjudication says UNGROUNDED or PARTLY GROUNDED, the detector should have flagged it. Count that as a hit. If the adjudication says GROUNDED, the detector should not have flagged it. Count that as a false positive.
-3. Compute precision (hits / total flagged) and recall (hits / total claims adjudicated UNGROUNDED or PARTLY GROUNDED). Coverage = how many of the 30 claim-pool claims the detector looked at.
-4. One line of qualitative notes — what this detector caught that others missed, what it missed, where its method is strong, where it's weak.
+1. Match detector findings to claim-pool claims by strict substring match. If you can't find the exact claim-pool phrase in the detector's output, count it as a miss. Do not reason about semantic similarity, do not paraphrase-match, do not accept "close enough."
+2. For each claim, check whether the detector flagged it. If the adjudication says ungrounded or partly grounded, the detector should have flagged it. Count that as a hit. If the adjudication says grounded, the detector should not have flagged it. Count that as a false positive.
+3. Compute precision (hits / total flagged) and recall (hits / total claims adjudicated ungrounded or partly grounded). Coverage = how many of the 30 claim-pool claims the detector looked at.
+4. One line of qualitative notes: what this detector caught that others missed, what it missed, where its method is strong, where it's weak.
 
 Save the scoreboard to module-5/scoreboard.md as a table:
 
 | Detector | Precision | Recall | Coverage | Hits | False positives | Misses | Notes |
 
-After the table, name ONE winner. Do not return "all four are useful" — force the pick. If top two are within 10% precision and 10% recall of each other, name the single winner first, THEN propose a two-method ensemble and say what each catches that the other doesn't. Maximum ensemble cap: two methods. Never three.
+After the table, name one winner. "All four are useful" is not an answer. If top two are within 10% precision and 10% recall of each other, name the single winner first, then propose a two-method ensemble and say what each catches that the other doesn't. An ensemble is two methods at most.
 
 At the bottom, add a one-line recommendation naming the detector or ensemble and the reason it won for output of this shape.
 

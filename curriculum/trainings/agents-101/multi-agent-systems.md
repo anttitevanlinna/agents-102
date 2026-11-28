@@ -17,7 +17,7 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Three agents search your wiki, your documents and practitioner articles, and three more decide what it means.
+Today three agents search your documents and practitioner articles, and three more work out what the findings mean. Files on your computer are enough.
 
 [Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 
@@ -33,34 +33,32 @@ Three agents search your wiki, your documents and practitioner articles, and thr
 
 ## Debrief
 
-Five minutes. The agent reviews the four prompts, the retrieval files, the synthesizer's briefing and the conversation, then rewrites the root instructions file in place and reports what changed. Push back on anything off.
+Five minutes. The agent reviews the four prompts, the retrieval files, the synthesizer's briefing and the conversation, then rewrites your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> in place and reports what changed. Push back on anything that looks wrong.
 
 {{prompt:a101-m3-debrief-handoff-rules}}
 
-## Nothing here checks any of it
+## The review checks handoffs, not truth
 
-The prompt asks for a harsh audit: two seams minimum, with evidence (file, pass, what was lost). Without the evidence clause, the review turns diplomatic.
-
-The audit reads how your agents handed work to each other. It does not check whether the briefing is true.
+The prompt asks the agent for a harsh review of the handoffs: at least two places where work was lost, each with evidence (the file, the step, what was lost). Without the demand for evidence, the review turns polite.
 
 ## Push back on the summary
 
 Push back where the summary is wrong: *"The planner and the reframer needed to be separate."* *"The wiki retriever kept normalising before writing."*
 
-## The doubt stays. Hold it.
+## The briefing is still unchecked
 
-Nothing checks the briefing yet, so its correctness stays open.
+Nothing checks the briefing yet, so whether it is right stays open.
 
 ## Optional memory check before Module 4
 
-**Optional move: pressure-test the memory.** After adding much to `sources/`, run this between modules. New evidence tests the memory's structure.
+**Optional: test the memory's structure.** After you add a lot to `sources/`, run this prompt between modules. New evidence shows whether the memory's topics still fit.
 
 {{prompt:a101-m3-homework-memory-health}}
 
 ## Key Concepts
 - Agents work together through shared files: what one writes is the next one's context.
 - Split where the parts differ, run them in parallel, bring them back to one place that decides.
-- Sessions on shared files, or helpers the main session starts and discards.
+- Two ways to run a team: separate sessions on shared files, or helpers the main session starts and discards.
 - Handoffs are where work gets lost: open the files where one agent handed to the next.
 
 ## Pre-reads before Module 4

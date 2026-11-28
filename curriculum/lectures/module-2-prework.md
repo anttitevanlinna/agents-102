@@ -20,7 +20,7 @@ If stuck, scan your next two weeks of calendar; the biggest unresolved item is u
 
 Module 2 works best when the agent can read a source connected to your challenge. If your work lives in a wiki or document system, check that the agent can reach it. Your own files work too.
 
-**Connectors** link the agent to places where your work lives: a wiki, a shared drive, or whatever you use. Look for them in your runtime's connector settings.
+**Connectors** link the agent to places where your work lives: a wiki, a shared drive, or whatever you use. Ask the agent which ones it can use.
 
 Without a connector, the memory can start from files and pasted excerpts in your training directory.
 
@@ -39,7 +39,7 @@ Pick one:
 
 ## Start the Module 2 handoff
 
-Create `prework/module-2-start.md` in your training directory. Add:
+Tell the agent three lines and have it save them as `prework/module-2-start.md`:
 
 - the live challenge you are bringing;
 - the first source the agent can read about it, or your fallback;

@@ -12,7 +12,7 @@ Round 1: 10% → 1%.
 Round 2: 1% → 0.1%.
 Round 3: 0.1% → 0.01%.
 
-The numbers are illustrative. They show that compounding breaks a single pass but helps you once each round checks against the sources.
+The numbers are illustrative. Unchecked, errors compound against you. Checked against the sources every round, the fixes compound for you.
 
 ["Are you sure?" is another fluent answer](slides/are-you-sure.md)
 
@@ -38,7 +38,7 @@ Each method tests a different link between a claim and its source.
 
 **3. Citation integrity.** Does the cited source contain the claim? Catches citations that point at nothing.
 
-**4. Counter-evidence search.** Does any source contradict the claim? Catches claims that fail when someone tests them against the evidence.
+**4. Counter-evidence search.** Does any source contradict the claim? Catches claims the sources argue against.
 
 ## You have done this before
 

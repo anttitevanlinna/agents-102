@@ -4,19 +4,17 @@ When flagged claims drop toward zero and stay there, the judge has stopped findi
 
 ## A flat score is information about the judge or the work
 
-A flat score is information about the judge or the work. Check both. The judge measures one thing: whether claims stay tied to the evidence. A grounded claim can still be vague or obvious, and this judge passes it.
+Check both the judge and the work. The judge measures one thing: whether each claim is tied to the evidence. A grounded claim can still be vague or obvious, and this judge passes it.
 
-Sharper framing, a recommendation that commits, a briefing someone reads to the end: the judge cannot see these. When the number stops moving, your judgment comes back in.
+The judge cannot see sharper framing, a recommendation that commits, or a briefing someone reads to the end. When the number stops moving, your judgment takes over.
 
-## You haven't checked the judge yet
+## Check every judge you intend to trust
 
-You marked claims against the judge in Module 5. Do that once for every judge you intend to trust: where it passed something you would have sent back, you agree less often than the number suggests.
+Mark a few claims yourself and compare them with the judge's verdicts, as in Module 5. Where the judge passed a claim you would have sent back, the score is better than the work.
 
 ## If the model stops fabricating, what is your judge for?
 
-Your judge catches claims that float free of the evidence. Every model release makes that check cheaper. No release so far has told anyone what good means in your company.
-
-The rest is yours to name.
+Your judge catches claims with no evidence behind them. Newer models may fabricate less, so this judge will find less. No model release so far has told anyone what good means in your company. That part is yours to define.
 
 <!-- maintainer -->
 

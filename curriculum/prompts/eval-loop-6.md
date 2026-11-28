@@ -20,6 +20,6 @@ Run the loop end to end:
 
 Run at least three rounds. After round 3, keep going until improvement is no longer significant.
 
-Never edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, the judge-integrity check, why the loop stopped, and the next boundary case to test.
+Never edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.
 
 Use these inputs; no preamble, start by writing the first generation tactic file:

@@ -1,11 +1,11 @@
 ## Steering raises the ceiling
 <!--slide:steering-raises-the-ceiling-->
 
-Two mails both avoid overclaiming; one is forgettable, the other makes the reader act.
+Two mails both stay grounded. One is forgettable. The other makes the reader act.
 
-Perhaps it names the tradeoff and gives a clean next move.
+The better mail names the tradeoff and gives a clear next move.
 
-Define that dimension as a check. That is a steering eval: did the output overperform on it?
+A goal-nudger is a check for that quality: it scores each output on the quality you chose.
 
 Groundedness protects the floor. Steering raises the ceiling.
 

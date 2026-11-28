@@ -16,17 +16,15 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage).
-
-His question: will the bitter lesson apply inside your company? Can agents improve if you define the outcome and let them find the path, or does organisational mess still matter too much?
+**The question, to you:** if you define the outcome and let agents find their own path, do they get better at your company's work, or is your organisation too messy for that? Ethan Mollick asks this in [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage).
 
 ## Run the loop without you in it
 
-The same judge keeps catching what slipped past, and the system absorbs the catches without your edits.
+The judge checks every draft, and the agent turns each flag into a rule for the next draft.
 
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
 
-> The same pattern applies to actions. An agent action starts as text: a proposed mail, ticket update, CRM change or command. Check the proposal before it becomes the action.
+> The same check works for actions. An agent action starts as text: a proposed mail, ticket update, CRM change or command. A judge can check that text before it becomes the action.
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
 
@@ -36,27 +34,25 @@ The same judge keeps catching what slipped past, and the system absorbs the catc
 
 ## Debrief
 
-Five minutes. The agent reads the round-by-round trail, sharpens the generator's tactic file in place and points your root instructions at it, so every briefing you ask for from now on is written from that tactic and checked by the same judge. The judge file stays untouched.
+Five minutes. The agent reviews every round, rewrites `./generation-tactic.md` once more and adds one line to your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>: every briefing you ask for in this folder follows the rules in that file and is scored by the judge. The judge file stays as it is.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
 ## Push back on the summary
 
-Read the agent's summary and push back: *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."*
+Push back on the agent's summary: *"That rule is too vague, make it observable"* / *"you added a rule the file already had after round 2."*
 
-If it sounds too kind, ask: *"Which rule did you claim to remove but keep under another name? Quote both lines."*
-
-The artifact: the sharpened `./generation-tactic.md`, the line in your root instructions that sends every later briefing through it, and one line in the Module 6 eval-notes naming the first always-on eval you'll run next.
+If the summary sounds too kind, check one removal: *"You said you removed a rule. Quote the old line and show me it is gone from the file."*
 
 ## Key Concepts
-- The loop improves the output round after round with nobody editing; the fixed judge is why the rise is real.
+- The loop improves the work round after round with nobody editing. The judge never changes, so a better score means better work.
 - Groundedness protects the floor; steering raises the ceiling.
 - A flat score is information about the judge or the work. Check both.
 - You design the loop and own the yardstick.
 
 ## Bring to Module 7
 
-**Your first five agent calls at work, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call the eval loop's checks could let run without you, and write the trigger into `module-6/trigger.md`.
+**Tell the agent five moments at work when you would bring it in.** The [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md) helps you spot them. Pick one where the eval loop's checks would let the agent work without you. The agent writes that trigger into `module-6/trigger.md`.
 
 The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) and [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) are optional references.
 
@@ -104,13 +100,13 @@ Your system now improves its own output. Next, it starts working for someone bes
 | Generation tactic | `./generation-tactic.md` | M6 eval-loop setup and Debrief rewrite | M6 repeated rounds; post-training always-on eval work |
 | Module 6 eval trail | `module-6/runs/`, `module-6/eval-notes.md` | M6 eval-loop run | M6 Debrief; M7 sharing diagnosis; post-training loop tuning |
 | Person trigger | `module-6/trigger.md` | M6 Bring to Module 7 homework | Solo M7 pick-one-person; solo M7 Prework |
-| Steering eval seed | `./goal-nudger-eval.md` | M6 closing prompt when run | Post-training excellence/steering eval work |
+| Goal-nudger seed | `./goal-nudger-eval.md` | M6 closing prompt when run | Post-training goal-nudger work |
 
 **Supersedes:** the previous M6 split across a manual groundedness loop and a separate steering exercise. The manual loop violated the "agents do the heavy lifting" rule from M2 onward by feeding judge output back to generator by hand. The new exercise automates the groundedness loop. Steering stays as a closing prompt, not a second full exercise.
 
 **Why one exercise, not two:** M6 is the core arc's closing magic beat. Splitting focus across two exercises dilutes the magic. The eval loop exercise carries both disciplines: convergence happens in the scoring, steering happens in what `./generation-tactic.md` comes to encode across rounds against a fixed judge. The student ends with infrastructure that pairs the M5 judge (fixed, groundedness-aware, reusable) with a generator tactic shaped to their own material's failure modes.
 
-**Strategic close:** Keep the grounded eval loop snappy as the main event. `new-human-role-in-the-loop.md` adds steering eval as a closing prompt: Claude asks questions, offers example dimensions to choose from, keeps asking until the dimension is judgeable, then saves `./goal-nudger-eval.md`. The distinction is floor/ceiling: grounded/fidelity evals keep work attached to evidence, brief, or policy; steering/excellence evals create positive pressure to overperform on a chosen dimension.
+**Strategic close:** Keep the grounded eval loop snappy as the main event. `new-human-role-in-the-loop.md` adds the goal-nudger as a closing prompt: Claude asks questions, offers example dimensions to choose from, keeps asking until the dimension is judgeable, then saves `./goal-nudger-eval.md`. The distinction is floor/ceiling: grounded/fidelity evals keep work attached to evidence, brief, or policy; steering/excellence evals create positive pressure to overperform on a chosen dimension.
 
 **Sources:**
 - `[checked:2026-08-23 result:OK due:none]` https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage — [practitioner direct] Mollick (pub 2025-07-28), framing of bitter-lesson scaling against the organisational "garbage can" problem used in the opener. `due:none` under the Theory-construct variant (Antti, 2026-09-01) — named constructs cited for the question they frame, not for currency, no capability claim; dated check owned by `run-the-first-experiment.md`. fallback: retain the question and remove the named attribution.

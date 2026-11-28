@@ -16,12 +16,8 @@ produces:
     location: "./{{artifact:root-instructions}} (Groundedness checks section)"
     note: adds/sharpens 1-4 groundedness rules in place
 ---
-Start by reading the files. No plan or preamble.
+Read `./{{artifact:root-instructions}}` if it exists, then scan `module-5/evidence-roster.md`, `module-5/claim-pool.md`, `module-5/adjudicated-claims.md`, `module-5/detectors/` (the four detector outputs), `module-5/scoreboard.md`, and `judges/groundedness-judge.md`.
 
-Review this session and update the root `./{{artifact:root-instructions}}` with groundedness operating rules. Read `./{{artifact:root-instructions}}` if it exists, then scan `module-5/evidence-roster.md`, `module-5/claim-pool.md`, `module-5/adjudicated-claims.md`, `module-5/detectors/` (the four detector outputs), `module-5/scoreboard.md`, and `judges/groundedness-judge.md`.
+Update `./{{artifact:root-instructions}}` so every later session checks its briefings with that judge. Add up to four short rules under "Groundedness checks": where the judge runs, and where the benchmark showed it cannot check. In those places the agent answers "not enough evidence". If the judge now covers an earlier rule, quote that rule and cut it. Write each rule so an agent that never saw this session can follow it.
 
-Look back over the session: when did ungroundedness matter, which claim-shapes needed checking, where did citations look present but not load-bearing, and what should future agents know before they turn a briefing, memo, recommendation, or proposed action into something people rely on?
-
-Then update `./{{artifact:root-instructions}}` as the durable operating memory for this agent system. Add or sharpen 1-4 short rules that name where `judges/groundedness-judge.md` runs and where the benchmark showed it cannot check, and tell future sessions to answer "not enough evidence" there instead of smoothing over the gap; quote one earlier rule the judge now covers and cut it, or say none exists. If a Groundedness checks section already exists, edit the rules in that section in place; do not add a new subheading or parallel list. Otherwise create a short section named "Groundedness checks". Touch ONLY that section; preserve every other section verbatim. Do not paste a benchmark summary. Do not add a retro section. Each rule should be usable by a future agent that never saw this session.
-
-When you're done, read back the Groundedness checks section you just wrote and confirm each rule is in the file. Copy the exact rule text, one line per rule. Then tell me in 1-5 lines: what changed in `./{{artifact:root-instructions}}`, which scoreboard row or adjudicated claim drove it, what future agents must do differently, and which claim shape you are LEAST confident you caught correctly. Then name the two patterns this prompt enforced: one about which boundary you were allowed to touch, one about checking what landed after you wrote it.
+Then show me the rules as they now stand in the file, the scoreboard row or claim behind each one, and the kind of claim you are least sure the judge catches.

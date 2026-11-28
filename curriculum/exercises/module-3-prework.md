@@ -18,7 +18,7 @@ See what a single agent already does for working practitioners who've folded cod
 4. **Thariq Shihipar.** Read [The unreasonable effectiveness of HTML](https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html) (20 May 2026). Track why changing the review artifact changes how closely the human stays in the work.
 5. **Daniel Bilsborough.** Read [The Practitioner's Guide to Coding Agents](https://partner.danielbilsborough.com/claude-code) (updated 6 August 2026). Look for the plain-text memory and the boundary where consequential work still needs a person.
 
-For each pick, note in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner. Keep the note somewhere you'll see on training day.
+For each pick, note in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner. Keep the note somewhere you'll see when you start Module 3.
 
 The aim is to calibrate how much one agent can already do, so you know what coordinating three more buys you.
 

@@ -20,12 +20,7 @@ produces:
   - id: generation-tactic
     location: ./generation-tactic.md
 ---
-Run an eval loop using my fixed judge.
-
-Fixed judge:
-- Never edit judges/groundedness-judge.md.
-- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.
-- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.
+Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
 - Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.
@@ -34,17 +29,21 @@ Starting generation tactic:
 Run at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.
 
 For each round:
-1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:
+1. Dispatch a generator subagent. It reads ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:
    - briefing.md in that round's folder
-2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:
+2. Dispatch a separate judge subagent. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:
    - judgment.md in that round's folder
-3. The main session, not a subagent, reads the judgment for that round and any new lines in ./remarks.md, and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes. Remarks are my reading as the person receiving the briefing; they go into the tactic only, never to the judge. With no remarks, the loop runs the same.
+3. The main session, not a subagent, reads the judgment for that round and any new lines in ./remarks.md, and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes. `remarks.md` holds my own comments on the briefings. Use them when you rewrite the tactic, and never pass them to the judge. If there are none, carry on.
 4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.
 
 When the loop stops:
-- Write module-6/eval-notes.md with a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round, the generation-tactic change after each round, naming any remark it came from, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.
+- Write module-6/eval-notes.md with:
+  - a table of claims flagged out of claims judged, round 0 (the baseline briefing) first and then each loop round
+  - the generation-tactic change after each round, naming any remark it came from
+  - why the loop stopped
+  - whether any judge subagent got instructions beyond the judge file
+  - one thing the judge still cannot see
+  - one human decision still needed
 - In chat, show me the same summary in under 12 lines.
 
 Do not stop for confirmation between rounds.
-
-No preamble. Start by computing and recording the judge's starting SHA, then run round 1.

@@ -12,6 +12,6 @@ I'm in a training where I'll build a working memory around one live challenge I'
 
 1. In one sentence, what's the initiative? A real, midsized-to-large piece of work you're carrying over the next few weeks: scope, stakes, still open.
 2. What have you already tried, read, or decided? What's ruled out, what's still open?
-3. Where are you currently stuck on this? What's the specific part you can't seem to get past, or the question you keep asking yourself and not landing?
+3. Where are you currently stuck on this? What's the specific part you can't seem to get past, or the question you keep asking yourself without getting an answer?
 
 When I've answered all three, write a one-paragraph brief to ./challenge.md. Show it to me before saving.

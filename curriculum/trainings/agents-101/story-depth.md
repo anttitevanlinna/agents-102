@@ -65,7 +65,7 @@ certainty unavailable, hold the doubt · the human moves one level up · access 
 · systems compound. Developed by enactment (exercises, the Debrief ritual, the mood contract)
 and named late or not at all: *the human moves up* is legible only from M6's recap; *access is
 not absorption* is one module; the creativity beats (M3 three stances, beige synthesizer, M6
-steering eval, M8 proposal forum) are on the page and no judge named them as a learning.
+goal-nudger, M8 proposal forum) are on the page and no judge named them as a learning.
 Borrowed theory sits on the leadership side (JTBD, Martin, Rumelt, Mollick, Avianca) and is
 nearly absent on the agent side.
 
@@ -250,7 +250,7 @@ floor. Steering raises the ceiling"*), unnamed as the spine.
 
 What step 0 says about it: every learning the cold reads named is a control learning. The
 creativity beats exist — three stances and the Rory seat at M3, *"the synthesizer averages
-everything into beige"*, frameworks that make it pick, the steering eval at M6, the proposal
+everything into beige"*, frameworks that make it pick, the goal-nudger at M6, the proposal
 forum at M8 — and no judge named them as a learning, because nothing braids them. The control
 arc is developed; the creativity arc is orphaned beats. The two failure modes the headline
 implies (beige without control's opposite; Avianca without creativity's) are both already in

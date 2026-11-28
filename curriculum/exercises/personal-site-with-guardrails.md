@@ -16,7 +16,7 @@ Change the context, watch the output shift, then package what you learned for th
 
 {{prompt:personal-site-with-guardrails-1}}
 
-The mess shows how much the later context changes the output. Every later phase overwrites `module-1/site.html`.
+The first site shows how much the later context changes the output. Every later phase overwrites `module-1/site.html`.
 
 ## Phase 2: Apply a framework you know
 
@@ -26,17 +26,17 @@ The site isn't there to sell. A colleague who visits it should think *"this is t
 
 ## Name the framework and tune it
 
-**StoryBrand** fits *"what kind of help is this person to others."* The hero is the colleague, not you. Skip the sales-funnel beats (Stakes, Call-to-Action).
+**StoryBrand** answers *"what kind of help is this person to others?"* Its hero is the colleague, not you. Leave out its sales parts (Stakes, Call-to-Action).
 
-**Name the framework, tune it, have the agent run it.** The LLM knows StoryBrand, so skip listing its questions. Same for Toyota Kata or SWOT: *"Apply X to Y, but tune for Z."*
+**Name the framework, tune it, have the agent run it.** The LLM knows StoryBrand, so you don't need to list its questions. The same works for Toyota Kata or SWOT: *"Apply X to Y, but tune for Z."*
 
 ## Keep yourself the protagonist, then run the beats
 
-Applied to the whole site, StoryBrand makes the colleague the protagonist. **The site stays a personal site; you stay the protagonist of the page.** Your name goes in the headline and your current work front and centre. StoryBrand shapes only the colleague-help section.
+Applied to the whole site, StoryBrand would make the colleague the main character. **This stays a personal site, and you stay its main character.** Your name is the headline and your current work is front and centre. StoryBrand shapes only the section on how you help colleagues.
 
 {{prompt:personal-site-with-guardrails-2}}
 
-Answer each of the five tuned beats briefly, in your own words. Don't polish. The agent then regenerates the site.
+The agent asks about five things. Answer each briefly, in your own words, without polishing. The agent then regenerates the site.
 
 ## Phase 3: Strengths
 
@@ -56,7 +56,7 @@ Most people can list what drives them mad at work in thirty seconds, but stall o
 
 ## List what you hate, then invert it
 
-List a few specific things you hate about work. Name actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"), not categories ("bureaucracy"). Vague input drifts back to the generic you.
+List a few specific things you hate about work. Name actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"), not categories ("bureaucracy"). Vague input gives you a generic page again.
 
 {{prompt:personal-site-with-guardrails-4}}
 
@@ -64,19 +64,19 @@ List a few specific things you hate about work. Name actual things ("meetings wh
 
 *6 min*
 
-Run this one. The debrief starts from the file it writes, and the agent waits for one answer from you.
+The Debrief starts from the file the agent writes here. The agent asks you one question and waits for your answer.
 
 {{prompt:personal-site-with-guardrails-5}}
 
-The three generic claims show where the context ended. The three traced lines show where your context took over. Your answer, what you gave it that changed the page most, goes in as the last line of `module-1/context-trace.md`.
+The agent finds three generic claims, where your context ran out, and traces three lines to the context that produced them. Your answer, what you gave the agent that changed the page most, becomes the last line of `module-1/context-trace.md`.
 
-LLMs go easy on their own output. If picks come back soft, ask the agent to over-flag with no charity.
+LLMs go easy on their own output. If the three picks seem mild, ask the agent to flag more and be harsher.
 
 ## Phase 6: Free iteration
 
 *6 min*
 
-Make it yours: color, layout, tone, a quote at the top, a section most sites lack. Iterate until you say *"yes, this is me."* You drive; no set prompts.
+Make it yours: color, layout, tone, a quote at the top, a section most sites lack. Iterate until you say *"yes, this is me."* You lead, with no set prompts.
 
 **Tip: steal a look and feel by naming a site.** The LLM knows famous sites' design by name. Try *"Restyle `module-1/site.html` to feel like X"* with two or three sites, such as Stripe, Linear or Patagonia, and keep your favorite.
 
@@ -84,23 +84,23 @@ Make it yours: color, layout, tone, a quote at the top, a section most sites lac
 
 *4 min*
 
-Capture the move so a fresh agent can repeat it on someone else's bio.
+Have the agent save what worked, so a fresh agent can do the same for someone else's bio.
 
 {{prompt:personal-site-with-guardrails-6}}
 
-Open `module-1/personal-brand-generation.md` and read the first two or three rules. The agent reads the file when a future personal-brand task points to it. Push back on anything that doesn't match what you did.
+Ask the agent to show you the first two or three rules in `module-1/personal-brand-generation.md`. A future agent reads this file when a personal-brand task points to it. Push back on any rule that doesn't match what you did.
 
 ## See the mechanism repeat in every phase
 
 **What happened:**
 
-The agent reads everything in the session: your LinkedIn, the colleague-guide frame, strengths, the mirror-list and the site it wrote last. The more specific the context, the more the output is yours.
+In every phase the agent read everything in the session: your LinkedIn text, your answers, your strengths, the things you hate and the site it wrote last. The more specific the context, the more the output is yours.
 
 ## Take the context move past this site
 
 **The point:**
 
-The LLM didn't get better between Phase 1 and Phase 6. The context did. The same mechanism scales to business proposals, competitor analysis and product strategy.
+The LLM didn't get better between Phase 1 and Phase 6. The context did. The same mechanism works for business proposals, competitor analysis and product strategy.
 
 This was **Recipe 1**. When the next output needs the same move, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves and components.
 

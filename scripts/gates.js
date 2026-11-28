@@ -21,6 +21,7 @@ const PER_TRAINING = [
   'scripts/check-slide-numbering.js',
   'scripts/check-slide-tiers.js',
   'scripts/calculate-time.js --check',
+  'scripts/prompt-taste.js --check',   // prompt taste ratchet: scored tells must not exceed curriculum/evals/lints/prompt-taste.baseline.json
 ]
 
 const GATES = [

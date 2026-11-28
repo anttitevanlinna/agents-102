@@ -8,7 +8,7 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { createHash } = require('node:crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const { WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
+const { retitleTrainerDemos, WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
 const { renderCourseNavigation, COURSE_READING_CUE, EXTRACTION_BOOTSTRAP } = require('./a101-mvp-navigation.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -44,16 +44,22 @@ test('offline prework is copied from the rendered edition and fails on missing o
   assert.throws(() => prependOfflinePrework('<main>No M1</main>', rendered), /received 0/);
 });
 
+test('open edition keeps the trainer demos without the Demo label', () => {
+  const page = '<a>Demo: 1st scheduled agent</a><h1>Demo: 1st scheduled agent</h1><p>Body.</p><h1>Demo: Agent that takes action</h1>';
+  assert.equal(retitleTrainerDemos(page), '<a>1st scheduled agent</a><h1>1st scheduled agent</h1><p>Body.</p><h1>Agent that takes action</h1>');
+  assert.throws(() => retitleTrainerDemos('<p>No demos.</p>'), /Trainer demo missing/);
+});
+
 test('edition loader framing patches exactly two claims and fails on upstream drift', () => {
-  const first = 'The root instructions file comes in the Debrief.';
-  const second = 'Five minutes. A retro, <strong>and the first root instructions file in this directory.</strong>';
+  const first = 'The agent writes your <span class="rt-claude-skills"><code>CLAUDE.md</code></span><span class="rt-agent-skills"><code>AGENTS.md</code></span> in the Debrief.';
+  const second = 'writes <strong>the first <span class="rt-claude-skills"><code>CLAUDE.md</code></span><span class="rt-agent-skills"><code>AGENTS.md</code></span> in this directory</strong>';
   const source = `<p>${first}</p><p>${second} The agent writes the rules.</p>`;
   const output = applyLoaderFraming(source);
-  assert.equal(output, '<p>You develop your working rules in the Debrief. The existing root file only loads course navigation.</p><p>Five minutes. A retro, <strong>and your own working rules for this directory.</strong> The agent writes the rules.</p>');
+  assert.equal(output, '<p>The agent writes your working rules in the Debrief. The existing root file only loads course navigation.</p><p>writes <strong>your own working rules for this directory</strong> The agent writes the rules.</p>');
   assert.throws(() => applyLoaderFraming(source.replace(first, 'Upstream framing changed.')), /received 0/);
   assert.throws(() => applyLoaderFraming(source + first), /received 2/);
   assert.equal(applyLoaderFraming('<p>Theory only.</p>', { required: false }), '<p>Theory only.</p>');
-  assert.equal(applyLoaderFraming(`<p>${first}</p>`, { required: false }), '<p>You develop your working rules in the Debrief. The existing root file only loads course navigation.</p>');
+  assert.equal(applyLoaderFraming(`<p>${first}</p>`, { required: false }), '<p>The agent writes your working rules in the Debrief. The existing root file only loads course navigation.</p>');
 });
 
 test('Contents moves behind the first start without copying or cutting any content', () => {
@@ -157,9 +163,9 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const document = dom.window.document;
     assert.deepEqual(exceptions, [], 'inline workbook runtime should execute without exceptions');
     assert.match(document.title, /ACME/);
-    assert.equal(html.split('You develop your working rules in the Debrief. The existing root file only loads course navigation.').length - 1, 1);
-    assert.equal(html.split('Five minutes. A retro, <strong>and your own working rules for this directory.</strong>').length - 1, 1);
-    assert.doesNotMatch(html, /The root instructions file comes in the Debrief\.|and the first root instructions file in this directory\./);
+    assert.equal(html.split('The agent writes your working rules in the Debrief. The existing root file only loads course navigation.').length - 1, 1);
+    assert.equal(html.split('writes <strong>your own working rules for this directory</strong>').length - 1, 1);
+    assert.doesNotMatch(html, /The agent writes your <span class=\"rt-claude-skills\"><code>CLAUDE\.md<\/code><\/span><span class=\"rt-agent-skills\"><code>AGENTS\.md<\/code><\/span> in the Debrief\.|<strong>the first <span class=\"rt-claude-skills\">/);
     const rules = [...document.styleSheets].flatMap(sheet => [...sheet.cssRules]);
     assert.ok(rules.some(rule => rule.selectorText === ':root' && rule.style.getPropertyValue('--bg').trim() === '#efe6d2'), 'actual workbook root theme CSS parses');
     assert.ok(rules.some(rule => rule.selectorText === 'body' && rule.style.getPropertyValue('font-family') === 'var(--font-body)'), 'actual workbook body font CSS parses');
@@ -342,7 +348,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
       }
     } finally { guideDom.window.close(); }
     assert.doesNotMatch(fs.readFileSync(path.join(unpacked, 'agents-101-handbook.html'), 'utf8'), /fonts\.(?:googleapis|gstatic)\.com/);
-    assert.doesNotMatch(fs.readFileSync(path.join(unpacked, 'agents-101-handbook.html'), 'utf8'), /The root instructions file comes in the Debrief\.|and the first root instructions file in this directory\./);
+    assert.doesNotMatch(fs.readFileSync(path.join(unpacked, 'agents-101-handbook.html'), 'utf8'), /The agent writes your <span class=\"rt-claude-skills\"><code>CLAUDE\.md<\/code><\/span><span class=\"rt-agent-skills\"><code>AGENTS\.md<\/code><\/span> in the Debrief\.|<strong>the first <span class=\"rt-claude-skills\">/);
     const offlineHtml = fs.readFileSync(path.join(unpacked, 'agents-101-handbook.html'), 'utf8');
     const offline = new JSDOM(offlineHtml);
     try {

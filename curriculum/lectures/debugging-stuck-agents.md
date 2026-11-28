@@ -4,11 +4,11 @@ Agents get stuck: wrong source, three views averaged into mush, the wrong file w
 
 ## Diagnose before repair
 
-Prompt your stuck system to diagnose whether the bug lives in the sources, the processing, or the boundary between agents.
+Ask the stuck system to diagnose where the problem is: in the sources, in the processing, or at the boundary between agents.
 
 {{prompt:debugging-stuck-agents-1}}
 
-Make your own variant.
+Adapt the prompt to your own system.
 
 ## Sources, processing, boundary
 
@@ -20,7 +20,7 @@ Make your own variant.
 
 4. **Shrink the rerun:** rerun only the smallest step that should now differ.
 
-5. **Have the agent write the lesson:** a rule for the root instructions file on what to read first, what not to smooth over, which output format to produce, and when to stop and ask.
+5. **Have the agent write the lesson:** a rule for your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> on what to read first, what not to smooth over, which output format to produce, and when to stop and ask.
 
 <!-- maintainer -->
 

@@ -1,20 +1,20 @@
 # Compounding
 
-The thing a chat can't do is **Phase 3**: new sources made the existing topic pages *sharper instead of longer*. The second batch made the first batch better. That is compounding.
+In **Phase 3**, new sources made the existing topic pages *sharper instead of longer*. The second batch of sources improved what the first batch built. A chat cannot do that. That is compounding.
 
 ## A few problems, or a capability?
 
 We started building an agent factory. Three people went off and deployed agents, fast. I asked what capabilities they were building. They said: we have a few problems to solve.
 
-Solve a problem and close it, and problem four costs what problem one did. Keep what each one taught in files the next run reads, and problem four starts ahead. That is the difference between a chat and a system.
+Solve a problem and close it, and problem four costs what problem one did. Keep what each one taught in files the next session reads, and problem four starts ahead. That is the difference between a chat and a system.
 
 ## Stop chatting. Build a system.
 
 I keep repeating this. In a chat you handhold the agent, take a few actions, and at the end nothing is saved. Your performance is about the next hundred sessions, not this one.
 
-## Two words, held together
+## A system is persistence plus automation
 
-A system is two things stacked:
+A system has two parts:
 
 - **Persistence.** Files on disk the agent reads again, not a thread that resets.
 - **Automation.** The instructions sit in a file the agent reads at session start.
@@ -23,7 +23,7 @@ A saved document with no agent is just a document. An agent with no files is a c
 
 ## Why the sharpening happens
 
-The agent read the existing topic pages first, as context, then the new sources, then integrated. Old and new claims met, and the ones that couldn't survive got cut. Context shapes output, at system scale.
+The agent read the existing topic pages first, then the new sources, and then rewrote the pages. Where an old claim and a new source disagreed, the weaker claim was cut. Context shapes output, as in Module 1, now across a whole folder.
 
 ## It gets better by being edited
 
@@ -35,21 +35,21 @@ The memory is a folder of markdown files. No database, special tool or paid tier
 
 The agent in `agents/` is also markdown: instructions a session reads when you point it there. Any agent runtime can read it.
 
-Language models are strongest at reading and writing text. Stored as text, knowledge is read by reading and updated by writing.
+Language models are strongest at reading and writing text. Knowledge stored as text is knowledge the agent can read and update directly.
 
 [Three layers, one folder](slides/three-layers-one-folder.md)
 
 ## What this unlocks
 
-The agent's answers cite your files and carry a voice that isn't a generic industry take. *Generic AI becomes your AI when you build the memory it reads.*
+The agent's answers cite your files and sound like your company, not like a generic industry take. *Generic AI becomes your AI when you build the memory it reads.*
 
 ## Could a competitor claim this?
 
-If a competitor could claim a page, the memory is growing but not compounding. Spot what's still generic and sharpen it.
+If a competitor could have written a page, the memory is growing but not compounding. Spot what's still generic and sharpen it.
 
 {{prompt:compounding-1}}
 
-The agent comes back with three pointed requests. Answer one and let it update the page.
+The agent asks you three questions. Answer one and have the agent update the page.
 
 [It can only use what someone wrote down](slides/only-what-someone-wrote-down.md)
 
@@ -62,7 +62,7 @@ The agent comes back with three pointed requests. Answer one and let it update t
 
 **Law moved in from Key Concepts (2026-09-24, Antti-directed).** `## Three layers, one folder` carries the three-layer bullet `building-agent-systems.md` § Key Concepts used to state.
 
-**Story blend, M2 slides (2026-09-23).** Headers per `module-design/a101-story-proposals/blend.md` § Titles, M2. Seven slides: `Two words, held together`, `Why the sharpening happens`, `It gets better by being edited`, `A folder of text, and that is the point`, `What this unlocks`, `Could a competitor claim this?`, `It can only use what someone wrote down`. The split between the third and the second is mechanism (why pages sharpen) against discipline (what keeps them sharpening); no prose moved to make it. The last slide carries the blend's plant for the access-is-not-absorption learning, verbatim: *the agent can only work from what somebody wrote down; most of what you know about your own company, nobody has*. The slide closes on what the memory is worth, because M2's mood is satisfied compounding; the word for the gap is not planted here.
+**Story blend, M2 slides (2026-09-23).** Headers per `module-design/a101-story-proposals/blend.md` § Titles, M2. Seven slides: `A system is persistence plus automation`, `Why the sharpening happens`, `It gets better by being edited`, `A folder of text, and that is the point`, `What this unlocks`, `Could a competitor claim this?`, `It can only use what someone wrote down`. The split between the third and the second is mechanism (why pages sharpen) against discipline (what keeps them sharpening); no prose moved to make it. The last slide carries the blend's plant for the access-is-not-absorption learning, verbatim: *the agent can only work from what somebody wrote down; most of what you know about your own company, nobody has*. The slide closes on what the memory is worth, because M2's mood is satisfied compounding; the word for the gap is not planted here.
 
 The blend lists `It gets better by being edited` after `A folder of text, and that is the point`. It sits before it instead, so the paragraph stays where it was written and the two refuse-to-get-fancy beats do not both move.
 

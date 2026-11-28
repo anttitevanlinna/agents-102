@@ -18,7 +18,7 @@ produces:
 ---
 Spawn one subagent to set up the benchmark target.
 
-The target is the Module 3 briefing as it was, unchanged.
+The target is my baseline briefing as it was, unchanged.
 
 Instructions for the subagent:
 - Read the strategic question under `## Question` in `module-3/briefing-baseline.md`. Do not open the rest of the file yet.

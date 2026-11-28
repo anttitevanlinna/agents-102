@@ -2,7 +2,7 @@
 
 **Time:** ~28 minutes.
 
-Three retrievers fetch raw material on your challenge into `sources/`; a fourth session curates it into `memory/`. All read `./crux.md`. Each session has its own context and connectors. Skip any retriever you can't run today.
+Three retriever sessions fetch raw material on your challenge into `sources/`. A fourth session, the synthesizer, curates the material into `memory/`. All four read `./crux.md`. Each session has its own context and connectors. Skip any retriever you can't run today. Docs and internet need only your computer.
 
 <div class="rt-code">
 
@@ -15,13 +15,13 @@ Three retrievers fetch raw material on your challenge into `sources/`; a fourth 
 
 </div>
 
-Paste each retriever prompt and confirm its short list. If an agent starts reading the world, stop it, steer narrower, then say *"continue"*.
+Paste each retriever prompt and confirm the short list the agent proposes. If an agent starts reading far too widely, stop it, narrow its task, then say *"continue"*.
 
 Session 1, wiki: `sources/wiki-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-1}}
 
-Session 2, docs: `sources/docs-retrieval.md`.
+Session 2, docs: `sources/docs-retrieval.md`. When it asks for clues, name files or a folder on your computer.
 
 {{prompt:three-retrievers-one-curator-2}}
 
@@ -29,7 +29,7 @@ Session 3, internet: `sources/internet-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-3}}
 
-If a file is thin, paste this for another round.
+If a retrieval file is thin, paste this prompt for another round.
 
 {{prompt:three-retrievers-one-curator-4}}
 
@@ -37,9 +37,9 @@ Session 4, synthesizer: `memory/`.
 
 {{prompt:three-retrievers-one-curator-5}}
 
-Open one retriever's file. Find one number or phrase that the synthesizer dropped or smoothed in `memory/`. Should it have survived?
+Ask the synthesizer for one number or phrase from a retriever's file that it dropped or smoothed in `memory/`. Should it have survived?
 
-Done when `memory/_synthesis-m3.md` names what changed.
+You are done when `memory/_synthesis-m3.md` names what changed.
 
 <!-- maintainer -->
 

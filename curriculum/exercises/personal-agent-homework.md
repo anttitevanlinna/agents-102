@@ -28,7 +28,7 @@ Give your daily output the look of your company's website, or any site you like:
 
 {{prompt:personal-agent-homework-1}}
 
-Give the agent the URL or paste a key page. The agent writes `./style.md` and appends the rule to the root instructions file. Tell the agent any hard brand rule it missed ("never pure black," "always serif headings"), and it adds them to the style file.
+Give the agent the URL or paste a key page. The agent writes `./style.md` and appends the rule to your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>. Tell the agent any hard brand rule it missed ("never pure black," "always serif headings"), and it adds them to the style file.
 
 ## Phase 3: Write the agent's instructions
 
@@ -71,7 +71,7 @@ Each morning's output shows what is sharp and what is soft in your memory.
 
 **The point:**
 
-A memory an agent reads on a schedule, producing output you respond to, is the start of a loop. Every HTML agent you build looks native to your organisation, because the root instructions file points each agent to `./style.md`.
+A memory an agent reads on a schedule, producing output you respond to, is the start of a loop. Every HTML agent you build looks native to your organisation, because your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> points each agent to `./style.md`.
 
 <!-- maintainer -->
 

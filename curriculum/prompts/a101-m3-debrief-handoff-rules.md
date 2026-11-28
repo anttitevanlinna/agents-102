@@ -13,10 +13,8 @@ produces:
     location: "./{{artifact:root-instructions}} (integrate in place)"
     note: sharpens division-of-work + handoff rules on the M2 file
 ---
-Start by reading the files. No plan or preamble.
+Read {{artifact:root-instructions}} at the root, then what this session produced in agents/, sources/ and module-3/. Look at how the agents worked together: where one agent redid or overwrote another's work, where something a retriever found never reached the briefing, and where the three stances ended up saying the same thing.
 
-Review this session and update the rules. Read {{artifact:root-instructions}} at the root, then scan what we just produced: agents/, sources/, module-3/. Audit harshly. Diplomatic summaries are a failing grade here. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever's dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?
+Rewrite {{artifact:root-instructions}} so the next session avoids those. Say what each agent is for, where it writes, and what it leaves to the others. Change the rules that turned out wrong, and work the new ones into the file where they belong.
 
-Then rewrite {{artifact:root-instructions}}. Integrate, don't append. Sharpen the rules that govern division of work and handoff shape: what each agent is for, what it writes to, what it does NOT do. Add what's missing, remove what turned out wrong. Don't add a "retro notes" section; rewrite the file as the better version.
-
-When you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why. Name at least TWO handoff seams where the rules wobbled, with specific evidence: name the file, the pass, and what was lost. Name one thing you would have missed without the "audit harshly" instruction. A seam without evidence doesn't count.
+Then tell me in three to five lines what you added, sharpened and removed, and for each the handoff that showed it: the file, and what was lost there.

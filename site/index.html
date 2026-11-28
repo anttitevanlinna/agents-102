@@ -37,7 +37,8 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+@media (max-width: 560px) { html { scroll-padding-top: 76px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { margin: 0; background: var(--paper); color: var(--fg); font: 17px/1.6 var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
 a { color: inherit; }
@@ -46,21 +47,28 @@ a { color: inherit; }
 @media (max-width: 520px) { .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
 
 /* Header: same brand bar as the handbook */
-.top { background: var(--paper); }
+/* Sticky, so the one primary action stays on screen while the prompt and the rows take the first view. */
+.top { position: sticky; top: 0; z-index: 10; background: var(--paper); transition: box-shadow .2s; }
+.top.stuck { box-shadow: 0 1px 0 var(--line); }
 .top .wrap { height: 76px; display: flex; align-items: center; gap: 16px; }
+.top .start { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: var(--ink); color: var(--btn-fg); font-weight: 600; font-size: 15px; padding: 10px 16px; border-radius: 4px; white-space: nowrap; }
+.top .start .narrow { display: none; }
+.top .start::after { content: '→'; transition: transform .15s; }
+.top .start:hover::after { transform: translateX(3px); }
+@media (max-width: 560px) { .top .wrap { height: 60px; gap: 12px; } .bosser svg { width: 36px; height: 36px; } .brand { font-size: 19px; } .top .start { padding: 9px 13px; } .top .start .wide { display: none; } .top .start .narrow { display: inline; } }
 .bosser { display: block; line-height: 0; }
 .bosser svg { display: block; }
 .brand { font: 700 21px/1 var(--font-body); letter-spacing: -.045em; text-decoration: none; white-space: nowrap; color: var(--ink); }
 .brand::before { content: ''; display: inline-block; width: 7px; height: 17px; background: var(--orange); transform: skewX(-13deg); margin-right: 9px; }
 
-/* Note */
+/* Note. The bold half of the line under the headline answers "what is this?" at a glance. */
 .intro { padding-top: 32px; position: relative; }
 h1 { font: 700 clamp(30px, 4.6vw, 48px)/1.05 var(--font-body); letter-spacing: -.045em; margin: 0 0 12px; color: var(--ink); text-wrap: balance; }
-.one { font-size: clamp(17px, 2vw, 20px); line-height: 1.35; letter-spacing: -.015em; color: var(--fg-2); margin: 0; max-width: 30em; }
+
 
 /* The question */
-.ask { margin-top: 28px; }
-.ask label { display: block; font: 700 clamp(24px, 3.4vw, 34px)/1.1 var(--font-body); letter-spacing: -.04em; margin-bottom: 10px; color: var(--ink); }
+.ask { margin-top: 20px; }
+.ask label { display: block; font: 400 clamp(19px, 2.2vw, 22px)/1.35 var(--font-body); letter-spacing: -.015em; margin-bottom: 12px; color: var(--ink); }
 /* The input looks like one: a white box with a border, a cursor, a clear button. Its bottom-left corner is square so the orange line runs on from it. */
 .field { display: flex; gap: 8px; align-items: center; border: 3px solid var(--orange); border-radius: 10px 10px 10px 0; background: var(--paper); padding: 6px 6px 6px 16px; cursor: text; box-shadow: inset 0 2px 4px rgba(0, 0, 0, .06); transition: box-shadow .15s; }
 .field:hover { box-shadow: inset 0 2px 4px rgba(0, 0, 0, .06), 0 0 0 4px color-mix(in srgb, var(--orange) 14%, transparent); }
@@ -75,9 +83,11 @@ h1 { font: 700 clamp(30px, 4.6vw, 48px)/1.05 var(--font-body); letter-spacing: -
 .field button[disabled] { opacity: .6; cursor: default; }
 .priv { margin: 0; }
 /* One orange line: the input's underline turns down the left edge and branches into every module row. */
-.try, .plan { border-left: 3px solid var(--orange); padding-left: 18px; }
-@media (max-width: 560px) { .try, .plan { padding-left: 12px; } .field .wide { display: none; } .field { padding-left: 12px; } }
-.try { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 0; padding-top: 12px; font-size: 13px; color: var(--fg-3); }
+.plan { border-left: 3px solid var(--orange); padding-left: 18px; }
+/* Examples sit inside the input box, under a hairline, as other things to type. */
+.field { flex-wrap: wrap; }
+.try { flex: 0 0 calc(100% + 22px); display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 2px 0 0 -16px; padding: 9px 16px 4px; border-top: 1px solid var(--line); font-size: 13px; color: var(--fg-3); cursor: default; }
+@media (max-width: 560px) { .plan { padding-left: 12px; } .field .wide { display: none; } .field { padding-left: 12px; } .try { margin-left: -12px; flex-basis: calc(100% + 18px); padding-left: 12px; } }
 .try button { font: inherit; color: var(--fg-2); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
 .try button:hover, .try button[aria-pressed="true"] { color: var(--ink); text-decoration-color: var(--orange); }
 
@@ -128,14 +138,13 @@ h1 { font: 700 clamp(30px, 4.6vw, 48px)/1.05 var(--font-body); letter-spacing: -
 .btn:hover::after { transform: translateX(3px); }
 .note { font-size: 15px; color: var(--fg-2); margin: 14px 0 0; max-width: 38em; }
 .note a { font-weight: 600; text-underline-offset: 3px; }
-.sig { margin: 36px 0 0; font-size: 15px; color: var(--fg-2); max-width: 34em; }
+.sig { margin: 0; font-size: 15px; color: var(--fg-2); max-width: 34em; }
 .sig b { color: var(--ink); }
 
 /* Sections */
 section { border-top: 1px solid var(--line); padding-block: 64px; }
 h2 { font: 700 clamp(26px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.035em; margin: 0 0 14px; color: var(--ink); text-wrap: balance; }
 .sub { color: var(--fg-2); max-width: 38em; margin: 0 0 32px; }
-.kicker { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--warm); margin: 0 0 10px; }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
 .two h3 { font-size: 21px; letter-spacing: -.02em; margin: 0 0 12px; color: var(--ink); }
 .two ul { margin: 0; padding-left: 1.1em; color: var(--fg-2); }
@@ -163,24 +172,23 @@ footer p { margin: 0; max-width: 46em; }
   <div class="wrap">
     <a class="bosser" href="https://bosser.consulting/" aria-label="Bosser"><svg viewBox="0 0 100 100" width="44" height="44" aria-hidden="true"><rect width="100" height="100" fill="#000"/><g fill="#fff" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="700" font-size="25" text-anchor="middle"><text x="27" y="47">B</text><text x="50" y="47">O</text><text x="73" y="47">S</text><text x="27" y="74">S</text><text x="50" y="74">E</text><text x="73" y="74">R</text></g></svg></a>
     <a class="brand" href="/">Agents 101</a>
+    <a class="start" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="header"><span><span class="wide">Start the free course</span><span class="narrow">Free course</span></span></a>
   </div>
 </header>
 
 <main>
   <div class="wrap intro">
     <h1>You believe smart action beats another round of analysis. So do I.</h1>
-    <p class="one">This is the course I run inside companies. Take it on your own, free.</p>
-
     <form class="ask" id="ask" data-endpoint="https://a101-entry.tevanlin.workers.dev/plan">
-      <label for="stuck">So, what's stuck at work?</label>
+      <label for="stuck">What's stuck at work?</label>
       <div class="field">
         <textarea id="stuck" name="challenge" rows="1" autocomplete="off" maxlength="120" placeholder="Type it here, in a few words">we keep losing deals to a cheaper competitor</textarea>
         <button class="clear" id="clear" type="button" aria-label="Clear and type your own">×</button>
         <button id="send" type="submit">Rewrite<span class="wide"> my course</span></button>
-      </div>
-      <div class="try" id="try"><span>or try</span>
-        <button type="button" data-ex="1" aria-pressed="false">our board wants an AI plan by March</button>
-        <button type="button" data-ex="2" aria-pressed="false">month-end close takes two weeks</button>
+        <div class="try" id="try"><span>or try</span>
+          <button type="button" data-ex="1" aria-pressed="false">our board wants an AI plan by March</button>
+          <button type="button" data-ex="2" aria-pressed="false">month-end close takes two weeks</button>
+        </div>
       </div>
     </form>
 
@@ -259,13 +267,12 @@ footer p { margin: 0; max-width: 46em; }
           <small>Exercise: Build an agent for someone else · 45 min</small></div>
           <div class="bar" aria-hidden="true"><span style="width:94%"></span></div></li>
       </ol>
-      <div class="plan-foot"><p class="status" id="status" role="status">An example answer Claude wrote from the course pages. Type your own challenge to get yours.</p><span>Orange bar: how much of the job the agents do. A sketch.</span></div>
-      <p class="plan-foot priv">What you type goes to Claude to rewrite the modules. This site keeps no copy.</p>
+      <p class="plan-foot"><span class="status" id="status" role="status">An example Claude wrote. Type your own to get yours.</span> <span>What you type goes to Claude; this site keeps no copy.</span></p>
     </div>
 
     <div class="go">
       <h2>Start by having Claude make you a game.</h2>
-      <a class="btn" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="plan">Start with prework</a>
+      <a class="btn" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="plan">Start the free course</a>
       <p class="note">The whole course takes about 11 hours. One message makes a game, then Claude sums up your week. You need Claude Pro or a higher paid plan.</p>
     </div>
   </div>
@@ -292,7 +299,6 @@ footer p { margin: 0; max-width: 46em; }
   <section id="teams" class="teams">
     <div class="wrap teams-grid">
       <div>
-        <p class="kicker">For teams</p>
         <h2>Running it for your people?</h2>
         <p class="sub">The course is free to take on your own. Teaching it to others needs a licence from Bosser.</p>
         <a class="link" href="https://bosser.consulting/training/" data-umami-event="licence-interest" data-umami-event-from="teams">Talk to Bosser about the team edition</a>
@@ -309,15 +315,13 @@ footer p { margin: 0; max-width: 46em; }
 
   <section class="again">
     <div class="wrap">
-      <a class="btn" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="footer-cta">Start with prework</a>
-      <p class="sig"><b>Antti Tevanlinna</b>, Bosser, Helsinki<br>I don't know exactly where this is going. Nobody does. The skill is learning to move through it.</p>
+      <p class="sig"><b>Antti Tevanlinna</b>, Bosser, Helsinki. This is the course I run inside companies.<br>I don't know exactly where this is going. Nobody does. The skill is learning to move through it.</p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <p>What you build is yours.</p>
     <p>© 2026 Bosser Oy</p>
   </div>
 </footer>
@@ -346,6 +350,11 @@ footer p { margin: 0; max-width: 46em; }
    the relay is set with textContent only. Any failure shows the standard lines.
    Umami gets a count and an outcome, never the text. */
 (function () {
+  var top = document.querySelector('.top');
+  function stuck() { top.classList.toggle('stuck', window.scrollY > 4); }
+  window.addEventListener('scroll', stuck, { passive: true });
+  stuck();
+
   'use strict';
   var form = document.getElementById('ask'), inp = document.getElementById('stuck'), send = document.getElementById('send');
   var list = document.getElementById('rows'), statusEl = document.getElementById('status'), head = document.getElementById('planhead');

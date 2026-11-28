@@ -30,6 +30,16 @@ test('quotas and fragments are counted but never scored', () => {
   assert.strictEqual(r.score, 0);
 });
 
+test('git words are a tell in agents-101 only; code spans are not matched', () => {
+  const git = (text, training) => (scorePrompt('k', text, training).hits.git || []).length;
+  assert.strictEqual(git('List the exact filenames git diff would show.', 'agents-101'), 2);
+  assert.strictEqual(git('Diff against existing memory/ pages.', 'agents-101'), 1);
+  assert.strictEqual(git('Compare it with the existing memory/ pages.', 'agents-101'), 0);
+  assert.strictEqual(git('Run `git status` and tell me what changed.', 'agents-101'), 0);
+  assert.strictEqual(git('Open a pull request from this repo.', 'agentic-engineering-101'), 0);
+  assert.strictEqual(scorePrompt('k', 'Open a pull request from this repo.', 'agents-101').score, 4);
+});
+
 test('a clean prompt scores zero', () => {
   assert.strictEqual(scorePrompt('k', 'Push another round. What did the first pass miss? Append; do not rewrite.').score, 0);
 });

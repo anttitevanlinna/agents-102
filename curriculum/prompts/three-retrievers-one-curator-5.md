@@ -29,10 +29,10 @@ Memory is curated, not a raw dump. Existing topic pages cover the challenge. Ext
 
 The loop:
 1. Wait for any new content in sources/. When a file appears (or grows), read it.
-2. Diff against existing memory/ pages. Extend in place if the topic exists; create a new page if it doesn't. Don't ask permission for either path.
+2. Compare it with the existing memory/ pages. Extend in place if the topic exists; create a new page if it doesn't. Don't ask permission for either path.
 3. Make the update. Cite the source file by name. Integrate, don't append. Keep claims tight.
 4. Repeat until all three retrievals are integrated.
 
-When all three retrievals are in: write a one-paragraph note at memory/_synthesis-m3.md. List each memory file you actually changed by name and the exact filenames git diff would show; if fewer changed than the retrieval count, say so explicitly. Name where retrievals contradicted what was already in memory by quoting the conflicting claims verbatim from each source. Flag the contradiction; don't smooth it.
+When all three retrievals are in: write a one-paragraph note at memory/_synthesis-m3.md. List each memory file you changed by name; if fewer changed than the retrieval count, say so. Name where retrievals contradicted what was already in memory by quoting the conflicting claims verbatim from each source. Flag the contradiction; don't smooth it.
 
 Don't fabricate. Every memory update cites a source-file finding. If a retrieval is empty or thin, say so in your synthesis note rather than papering over the gap.

@@ -58,6 +58,7 @@ When the rules pull two ways, do not guess. Put up to ten prompts on one page, e
 | youFlip | 2 | "you" that means the student |
 | coined | 2 | "seam", "wobbled", "dialect leak" |
 | module | 1 | a sentence that names a module number; paths like `module-6/` are not matched |
+| git | 2 | "git", "diff", "repo", "pull request", "worktree" outside code spans; agents-101 only, engineers work in git |
 | quota, fragments, wording | 0 | counted for the reader, never scored |
 
 ## Limits
@@ -66,4 +67,4 @@ Blind to dense sentences, lost referents and non-native turns. Counts are a floo
 
 <!-- maintainer -->
 
-Baselines 2026-11-27: agents-101 27 scored tells in 96 prompts (2.0 per 1,000 words), left in Modules 7 and 8 and the two lens names in the Module 4 skill prompt. agentic-engineering-101 16 in 72 (2.7 per 1,000 words), mostly capitals for emphasis. Other trainings have no baseline.
+Baselines 2026-11-28: agents-101 27 scored tells in 96 prompts (2.0 per 1,000 words), left in Modules 7 and 8 and the two lens names in the Module 4 skill prompt; two of the 27 are the git tell on "repo" in `share-your-work-4` (how a teammate receives the work), maintainer call open. agentic-engineering-101 17 in 72 (2.8 per 1,000 words), mostly capitals for emphasis. Other trainings have no baseline.

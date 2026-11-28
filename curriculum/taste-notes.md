@@ -23,6 +23,12 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-28 — Agents 101 self-study: the way back from Cowork to the handbook
+
+### Counterweight: fewest words on the page lost to the learner driving through the agent
+
+Three ways back were shown, each as the learner sees it: a page button that remembers the copied prompt (built, two labels, nothing in Cowork), the learner telling Claude "Back to the handbook" (one Prework sentence plus a navigation rule in the course folder), and the longest prompts ending with a link. The recommendation was the button first, as the cheapest in words. Antti: *"option 2 is clearly the best"*. The phrase costs a sentence and a rule, and it keeps the learner in charge of the agent: they ask, the agent answers from the course folder. The button would have done the job silently, which is exactly what this course is not teaching. When word count and agency point different ways in Agents 101, agency wins. Promoted part (how the link is built): `check_platform_and_boundaries.md §53`.
+
 ## 2026-11-28 — Agents 101 prompts: fixes proposed from the full course run
 
 Nine fixes went to Antti on one page, each answering something an agent did in the run that the prompt did not mean. He approved two. Promoted: a fix removes the fault and adds nothing → `check_prompts.md §50`; the prompt makes the choice → `check_prompts.md §1`. The sentences stay here.

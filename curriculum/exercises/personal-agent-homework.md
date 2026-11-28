@@ -18,7 +18,7 @@ Pick the one you would read tomorrow morning.
 
 *8 min*
 
-For the morning-plan job, enable Google Calendar or Microsoft Outlook Calendar in your agent runtime's connector settings and sign in with your work account. Without a connector, use a calendar screenshot or exported agenda. The other two jobs need no connector.
+For the morning-plan job, connect your calendar if you can. Without a connector, copy-paste the full week as text. The other two jobs need no connector.
 
 ## Phase 2: Capture the look
 

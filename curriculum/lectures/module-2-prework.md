@@ -39,7 +39,7 @@ Pick one:
 
 ## Start the Module 2 handoff
 
-Tell the agent three lines and have it save them as `prework/module-2-start.md`:
+Tell the agent these three things and have it save them as `prework/module-2-start.md`:
 
 - the live challenge you are bringing;
 - the first source the agent can read about it, or your fallback;

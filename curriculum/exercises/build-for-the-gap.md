@@ -18,7 +18,7 @@ Your system works for you because it reads your memory. Pick one real person, de
 
 *5 min*
 
-Tell the agent four lines. It saves them as `module-7/brief.md`:
+Tell the agent these four things. It saves them as `module-7/brief.md`:
 
 - The gap: what your person needs and cannot get from your agent, because your agent reads your memory.
 - The job: what the new agent does, without your memory.

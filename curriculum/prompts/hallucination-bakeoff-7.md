@@ -6,6 +6,7 @@ origin: exercises/hallucination-bakeoff
 requires:
   - id: m5-scoreboard
     source: prompt:hallucination-bakeoff-5
+your-call: true
 ---
 Two things, in the chat.
 

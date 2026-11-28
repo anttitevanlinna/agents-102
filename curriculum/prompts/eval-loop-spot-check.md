@@ -11,6 +11,7 @@ requires:
 produces:
   - id: m5-my-marks
     location: module-5/my-marks.md (three lines appended)
+your-call: true
 ---
 Show me three claims from the last round's briefing in module-6/runs/, numbered, without saying which the judge flagged. Wait for my three marks: grounded or not grounded, and one line why.
 

@@ -28,7 +28,7 @@ Ask the agent to run the loop: at least three rounds, until a round no longer im
 
 {{prompt:eval-loop-2}}
 
-When round 1 is done, open the newest briefing in `module-6/runs/` and read it the way the person receiving it would. Tell the agent two or three remarks in plain words, and it adds them to `./remarks.md`: *"too hedged"*, *"this number is not ours"*, *"lead with the decision"*.
+**Look** When round 1 is done, open the newest briefing in `module-6/runs/` and read it the way the person receiving it would. Tell the agent two or three remarks in plain words, and it adds them to `./remarks.md`: *"too hedged"*, *"this number is not ours"*, *"lead with the decision"*.
 
 Leave the loop running. The next rounds turn your remarks into rules. The judge never sees them.
 

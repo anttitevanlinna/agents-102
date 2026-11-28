@@ -46,7 +46,7 @@ Schedule the prompt below to run every morning, at 7:00 or whenever suits you. I
 
 {{prompt:personal-agent-homework-3}}
 
-Save, run it once and open `latest.html`. It should look like your chosen site; plain default styling means the agent did not use the style file, so ask it to try again. To fix anything, tell the agent what to change, and it updates the instructions or the style file. The scheduling prompt names both files, so tomorrow's run picks up the change.
+**Look** Save, run it once and open `latest.html`. It should look like your chosen site; plain default styling means the agent did not use the style file, so ask it to try again. To fix anything, tell the agent what to change, and it updates the instructions or the style file. The scheduling prompt names both files, so tomorrow's run picks up the change.
 
 ## Phase 5: Let it run for a week
 

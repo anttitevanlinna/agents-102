@@ -56,7 +56,7 @@ List 3-5 strengths, one line each. They set what the site claims about you.
 
 *8 min*
 
-The agent puts your first site beside your site now, then asks you one question and waits. Open `module-1/look-back.html` before you answer.
+**Look** The agent puts your first site beside your site now, then asks you one question and waits. Open `module-1/look-back.html` before you answer.
 
 {{prompt:personal-site-with-guardrails-5}}
 

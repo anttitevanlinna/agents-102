@@ -14,6 +14,7 @@ callouts:
     say: A limit, and permission to find nothing, keep the agent from inventing issues.
   - at: Of the issues you found
     say: Agents state every finding with the same confidence. This line asks which one to doubt.
+your-call: true
 ---
 Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don't have one; older pages that likely went stale given what's in the newer sources. Also check that index.md links every page in memory/.
 

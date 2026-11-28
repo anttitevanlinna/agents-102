@@ -13,6 +13,7 @@ produces:
 callouts:
   - at: First ask me
     say: Your pick comes first, so the critic's cannot steer it.
+your-call: true
 ---
 First ask me which line on my site is most me, and which is the most generic. Wait for my answer.
 

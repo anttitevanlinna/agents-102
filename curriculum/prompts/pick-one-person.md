@@ -9,6 +9,7 @@ requires:
 produces:
   - id: solo-person
     location: module-7/person.md
+your-call: true
 ---
 Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 

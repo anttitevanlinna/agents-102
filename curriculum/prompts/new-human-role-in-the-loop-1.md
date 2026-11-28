@@ -8,6 +8,7 @@ callouts:
     say: A quality can be scored once it is something you can observe.
   - at: Once the dimension is clear
     say: Examples at 5, 3 and 1 anchor the scale better than a definition.
+your-call: true
 ---
 Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
 

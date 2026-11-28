@@ -11,6 +11,7 @@ requires:
 produces:
   - id: security-package-plan
     location: scrollback
+your-call: true
 ---
 I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root {{artifact:root-instructions}}, and the multi-agent runs in module-3/stances/.
 

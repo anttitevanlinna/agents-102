@@ -17,6 +17,7 @@ produces:
 callouts:
   - at: "Then open `module-3/briefing-baseline.md`"
     say: You answer before you see the verdict, so the judge cannot steer you.
+your-call: true
 ---
 Run `judges/groundedness-judge.md` on `module-5/briefing.md` with the files in `module-5/evidence-roster.md`. Write `module-5/baseline-score.md` with a section `## Module 3 briefing`: how many claims in `module-5/adjudicated-claims.md` are grounded, partly grounded and ungrounded, out of how many. Add a section `## Judge on the Module 3 briefing` with the number of claims judged and the number flagged.
 

@@ -134,6 +134,25 @@
     return [];
   }
 
+  // `your-call: true` travels as a comment after the block, like the
+  // callouts. The tag tells a learner at a glance that this prompt waits for
+  // their own judgment.
+  function yourCall(block) {
+    for (var n = block.nextSibling; n && n.nodeType !== 1; n = n.nextSibling) {
+      if (n.nodeType === 8 && /^prompt-your-call\b/.test(n.data)) return true;
+    }
+    return false;
+  }
+
+  function tagYourCall(doc, block) {
+    if (!yourCall(block) || block.querySelector('.prompt-block__yourcall')) return;
+    var dest = block.querySelector('.prompt-block__dest');
+    if (!dest) return;
+    var tag = el(doc, 'span', 'prompt-block__yourcall', 'Your call');
+    tag.title = 'The agent waits for your own judgment here';
+    dest.after(tag);
+  }
+
   function el(doc, tag, cls, text) {
     var e = doc.createElement(tag);
     if (cls) e.className = cls;
@@ -194,7 +213,7 @@
   function install(doc) {
     if (doc.body.getAttribute('data-prompt-view') !== 'short' || doc.body.hasAttribute('data-prompt-short-on')) return;
     doc.body.setAttribute('data-prompt-short-on', '');
-    Array.prototype.forEach.call(doc.querySelectorAll('main section.module .prompt-block'), function (b) { build(doc, b); });
+    Array.prototype.forEach.call(doc.querySelectorAll('main section.module .prompt-block'), function (b) { build(doc, b); tagYourCall(doc, b); });
     number(doc);
     // One listener for every toggle, so a cloned block keeps working.
     doc.addEventListener('click', function (ev) {

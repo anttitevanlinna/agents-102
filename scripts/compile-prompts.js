@@ -39,6 +39,8 @@
 //   callouts:                   # optional; shown on the prompt box in the self-study
 //     - at: <first words of a part>   # handbook, never copied (attention-design.md)
 //       say: <why the part is there>
+//   your-call: true             # optional; the prompt waits for the learner's own
+//                               # judgment; self-study handbook shows a tag
 //   note: <one-liner>           # optional; informal carve-out / context
 //   ---
 //   <prompt body — what the student copies>
@@ -110,7 +112,7 @@ function loadSourceRegistry(promptsDir) {
     //   - future prompt-anatomy highlight tooling (anchors)
     //   - downstream tooling that needs to find producers / consumers by id
     // Keep these optional; absence is normal for short / supplementary prompts.
-    for (const field of ['requires', 'produces', 'opportunistic-copy', 'opportunistic-copy-by', 'anchors', 'callouts', 'note', 'permission-mode']) {
+    for (const field of ['requires', 'produces', 'opportunistic-copy', 'opportunistic-copy-by', 'anchors', 'callouts', 'your-call', 'note', 'permission-mode']) {
       if (meta[field] !== undefined) entry[field] = meta[field];
     }
     // A callout points at a part of the prompt by its first words. When the
@@ -128,6 +130,7 @@ function loadSourceRegistry(promptsDir) {
         }
       }
     }
+    if (meta['your-call'] !== undefined && meta['your-call'] !== true) throw new Error(`${file}: 'your-call' is true or absent`);
     registry[key] = entry;
   }
   return registry;

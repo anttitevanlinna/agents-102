@@ -27,6 +27,7 @@
     --warm:        #c97942;   /* amber — secondary accent (from ai-training) */
     --hox:         #e8590c;   /* hot signal-orange — HOX heads-up widget */
     --note:        #2f6b6b;   /* calm teal — NOTE guidance widget */
+    --look:        #1f1a13;   /* ink — LOOK widget: open the result and look */
     --arctic:      #5e8ca8;   /* muted arctic blue — gradient tail */
     --ink:         #14110d;
     --ink-text:    #f4ecdb;
@@ -1147,6 +1148,49 @@ main::before {
         background: #000 !important;
         color: #fff !important;
     }
+}
+
+/* LOOK — open the result and look at it. Source shape: **Look** <what to
+   open, one thing to find>. Ink outline on paper, no tint: it marks the
+   coming-back moment after a prompt, where the learner's eyes go to the work. */
+.module .look-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1.5px solid var(--look);
+    border-radius: 8px;
+    background: #fff;
+}
+
+.module .look-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--look);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .look-block__body { color: var(--fg); }
+.module .look-block__body > p { margin: 0; }
+
+.phase--exercise .look-block {
+    background: transparent;
+    border-color: var(--ink-text);
+}
+.phase--exercise .look-block__badge { background: var(--ink-text); color: var(--ink); }
+.phase--exercise .look-block__body { color: var(--ink-text); }
+
+@media print {
+    .module .look-block { background: #fff !important; border-color: #000 !important; }
+    .module .look-block__badge { background: #000 !important; color: #fff !important; }
 }
 
 .module blockquote {
@@ -2967,6 +3011,7 @@ body.slides-active .a101-onboarding { display: none; }
   .prompt-short__part { padding: 8px 20px 10px; font: 400 13.6px/21px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #1f1e1b; }
   .prompt-short__line { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 2px; }
   .prompt-short__more { color: #6f6c62; }
+  .prompt-block__yourcall { margin-left: 10px; padding: 3px 9px; border: 1.5px solid #ea580c; border-radius: 999px; color: #c2410c; font: 700 11.5px/1 var(--font-body); letter-spacing: .07em; text-transform: uppercase; white-space: nowrap; }
   /* A callout is the handbook speaking: a white card in body type, narrower than the box, so the grey stays whole around it. */
   .prompt-callout { display: flex; gap: 8px; margin: 4px 10% 4px 14px; padding: 8px 12px; border-radius: 8px; background: #fff; color: #1f1e1b; font: 400 15.5px/1.45 var(--font-body); }
   .prompt-callout__mark { color: #d9540b; font-weight: 700; }
@@ -3567,7 +3612,7 @@ For course navigation, add this line to the `CLAUDE.md` file in this folder if i
 </code></pre>
 </div>
 
-<p>If the agent says the download failed, <a href="https://agents102.bosser.consulting/agents-101/agents-101-starter.tar.gz?v=bc1431cda408d1da" target="_blank" rel="noopener">download the course files</a> in your browser, drag the file into <code>agents-101</code>, and tell the agent it is there.</p>
+<p>If the agent says the download failed, <a href="https://agents102.bosser.consulting/agents-101/agents-101-starter.tar.gz?v=08585221ad0deded" target="_blank" rel="noopener">download the course files</a> in your browser, drag the file into <code>agents-101</code>, and tell the agent it is there.</p>
 <div class="walkthrough-media rt-profile rt-profile-cowork"><strong>Course files walkthrough</strong>
 </div>
 
@@ -4090,6 +4135,8 @@ My hate list:
 
 <!--prompt-callouts [{"at":"Position my site","say":"Naming a known method gives the agent the whole method in a few words."},{"at":"First help me say X","say":"A rough try is enough. The agent offers sharper versions and you choose."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Position my site with Seth Godin&#39;s line: this is for people who believe X.
 
 First help me say X. My rough try is below. Push it until it is uniquely me: offer three sharper versions, built from my hate list and my profile, and wait for my answer.
@@ -4105,6 +4152,8 @@ My rough try:
 <!--prompt-key personal-site-with-guardrails-3-->
 
 <!--prompt-callouts [{"at":"Position my site","say":"Naming a known method gives the agent the whole method in a few words."},{"at":"First help me say X","say":"A rough try is enough. The agent offers sharper versions and you choose."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Position my site with Seth Godin&#39;s line: this is for people who believe X.
 
@@ -4122,6 +4171,8 @@ My rough try:
 
 <!--prompt-callouts [{"at":"Position my site","say":"Naming a known method gives the agent the whole method in a few words."},{"at":"First help me say X","say":"A rough try is enough. The agent offers sharper versions and you choose."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Position my site with Seth Godin&#39;s line: this is for people who believe X.
 
 First help me say X. My rough try is below. Push it until it is uniquely me: offer three sharper versions, built from my hate list and my profile, and wait for my answer.
@@ -4137,6 +4188,8 @@ My rough try:
 <!--prompt-key personal-site-with-guardrails-3-->
 
 <!--prompt-callouts [{"at":"Position my site","say":"Naming a known method gives the agent the whole method in a few words."},{"at":"First help me say X","say":"A rough try is enough. The agent offers sharper versions and you choose."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Position my site with Seth Godin&#39;s line: this is for people who believe X.
 
@@ -4154,6 +4207,8 @@ My rough try:
 
 <!--prompt-callouts [{"at":"Position my site","say":"Naming a known method gives the agent the whole method in a few words."},{"at":"First help me say X","say":"A rough try is enough. The agent offers sharper versions and you choose."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Position my site with Seth Godin&#39;s line: this is for people who believe X.
 
 First help me say X. My rough try is below. Push it until it is uniquely me: offer three sharper versions, built from my hate list and my profile, and wait for my answer.
@@ -4170,6 +4225,8 @@ My rough try:
 
 <!--prompt-callouts [{"at":"Position my site","say":"Naming a known method gives the agent the whole method in a few words."},{"at":"First help me say X","say":"A rough try is enough. The agent offers sharper versions and you choose."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Position my site with Seth Godin&#39;s line: this is for people who believe X.
 
 First help me say X. My rough try is below. Push it until it is uniquely me: offer three sharper versions, built from my hate list and my profile, and wait for my answer.
@@ -4185,6 +4242,8 @@ My rough try:
 <!--prompt-key personal-site-with-guardrails-3-->
 
 <!--prompt-callouts [{"at":"Position my site","say":"Naming a known method gives the agent the whole method in a few words."},{"at":"First help me say X","say":"A rough try is enough. The agent offers sharper versions and you choose."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Position my site with Seth Godin&#39;s line: this is for people who believe X.
 
@@ -4300,11 +4359,13 @@ My strengths:
 
 <h2 id="phase-5-look-back">Phase 5: Look back</h2>
 <p><em>8 min</em></p>
-<p>The agent puts your first site beside your site now, then asks you one question and waits. Open <code>module-1/look-back.html</code> before you answer.</p>
+<p><strong>Look</strong> The agent puts your first site beside your site now, then asks you one question and waits. Open <code>module-1/look-back.html</code> before you answer.</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key personal-site-with-guardrails-5-->
+
+<!--prompt-your-call-->
 
 <pre><code>Build `module-1/look-back.html`, one self-contained page: my first site, `module-1/first-site.html`, beside the site as it is now. On the first site, mark three claims that turned out generic, empty or wrong about me once I gave you more, and say why for each. On the current site, mark the three lines that are most specifically me, and name the context that produced each: my LinkedIn, my hate list, my belief, my strengths, or a call I made on a draft.
 
@@ -4316,6 +4377,8 @@ Then ask me what I gave you that changed the page most. Wait for my answer. Writ
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key personal-site-with-guardrails-5-->
 
+<!--prompt-your-call-->
+
 <pre><code>Build `module-1/look-back.html`, one self-contained page: my first site, `module-1/first-site.html`, beside the site as it is now. On the first site, mark three claims that turned out generic, empty or wrong about me once I gave you more, and say why for each. On the current site, mark the three lines that are most specifically me, and name the context that produced each: my LinkedIn, my hate list, my belief, my strengths, or a call I made on a draft.
 
 Then ask me what I gave you that changed the page most. Wait for my answer. Write the two lists to `module-1/context-trace.md`, with my answer in my words as the last line.
@@ -4325,6 +4388,8 @@ Then ask me what I gave you that changed the page most. Wait for my answer. Writ
 
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key personal-site-with-guardrails-5-->
+
+<!--prompt-your-call-->
 
 <pre><code>Build `module-1/look-back.html`, one self-contained page: my first site, `module-1/first-site.html`, beside the site as it is now. On the first site, mark three claims that turned out generic, empty or wrong about me once I gave you more, and say why for each. On the current site, mark the three lines that are most specifically me, and name the context that produced each: my LinkedIn, my hate list, my belief, my strengths, or a call I made on a draft.
 
@@ -4336,6 +4401,8 @@ Then ask me what I gave you that changed the page most. Wait for my answer. Writ
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key personal-site-with-guardrails-5-->
 
+<!--prompt-your-call-->
+
 <pre><code>Build `module-1/look-back.html`, one self-contained page: my first site, `module-1/first-site.html`, beside the site as it is now. On the first site, mark three claims that turned out generic, empty or wrong about me once I gave you more, and say why for each. On the current site, mark the three lines that are most specifically me, and name the context that produced each: my LinkedIn, my hate list, my belief, my strengths, or a call I made on a draft.
 
 Then ask me what I gave you that changed the page most. Wait for my answer. Write the two lists to `module-1/context-trace.md`, with my answer in my words as the last line.
@@ -4345,6 +4412,8 @@ Then ask me what I gave you that changed the page most. Wait for my answer. Writ
 
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key personal-site-with-guardrails-5-->
+
+<!--prompt-your-call-->
 
 <pre><code>Build `module-1/look-back.html`, one self-contained page: my first site, `module-1/first-site.html`, beside the site as it is now. On the first site, mark three claims that turned out generic, empty or wrong about me once I gave you more, and say why for each. On the current site, mark the three lines that are most specifically me, and name the context that produced each: my LinkedIn, my hate list, my belief, my strengths, or a call I made on a draft.
 
@@ -4356,6 +4425,8 @@ Then ask me what I gave you that changed the page most. Wait for my answer. Writ
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key personal-site-with-guardrails-5-->
 
+<!--prompt-your-call-->
+
 <pre><code>Build `module-1/look-back.html`, one self-contained page: my first site, `module-1/first-site.html`, beside the site as it is now. On the first site, mark three claims that turned out generic, empty or wrong about me once I gave you more, and say why for each. On the current site, mark the three lines that are most specifically me, and name the context that produced each: my LinkedIn, my hate list, my belief, my strengths, or a call I made on a draft.
 
 Then ask me what I gave you that changed the page most. Wait for my answer. Write the two lists to `module-1/context-trace.md`, with my answer in my words as the last line.
@@ -4365,6 +4436,8 @@ Then ask me what I gave you that changed the page most. Wait for my answer. Writ
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key personal-site-with-guardrails-5-->
+
+<!--prompt-your-call-->
 
 <pre><code>Build `module-1/look-back.html`, one self-contained page: my first site, `module-1/first-site.html`, beside the site as it is now. On the first site, mark three claims that turned out generic, empty or wrong about me once I gave you more, and say why for each. On the current site, mark the three lines that are most specifically me, and name the context that produced each: my LinkedIn, my hate list, my belief, my strengths, or a call I made on a draft.
 
@@ -4631,6 +4704,8 @@ When you&#39;re done, list what you dropped and why, what you sharpened (before 
 
 <!--prompt-callouts [{"at":"First ask me","say":"Your pick comes first, so the critic's cannot steer it."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>First ask me which line on my site is most me, and which is the most generic. Wait for my answer.
 
 Then start a fresh subagent to read `module-1/site.html` cold. It gets the page and nothing from this session. Have it quote two lines: the one most uniquely this person (not the best line, the one nobody else could have written), and the most generic one, which could sit on anyone&#39;s site. Show its picks beside mine.
@@ -4642,6 +4717,8 @@ Then start a fresh subagent to read `module-1/site.html` cold. It gets the page 
 <!--prompt-key a101-m1-debrief-cold-critic-->
 
 <!--prompt-callouts [{"at":"First ask me","say":"Your pick comes first, so the critic's cannot steer it."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>First ask me which line on my site is most me, and which is the most generic. Wait for my answer.
 
@@ -4655,6 +4732,8 @@ Then start a fresh subagent to read `module-1/site.html` cold. It gets the page 
 
 <!--prompt-callouts [{"at":"First ask me","say":"Your pick comes first, so the critic's cannot steer it."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>First ask me which line on my site is most me, and which is the most generic. Wait for my answer.
 
 Then start a fresh subagent to read `module-1/site.html` cold. It gets the page and nothing from this session. Have it quote two lines: the one most uniquely this person (not the best line, the one nobody else could have written), and the most generic one, which could sit on anyone&#39;s site. Show its picks beside mine.
@@ -4666,6 +4745,8 @@ Then start a fresh subagent to read `module-1/site.html` cold. It gets the page 
 <!--prompt-key a101-m1-debrief-cold-critic-->
 
 <!--prompt-callouts [{"at":"First ask me","say":"Your pick comes first, so the critic's cannot steer it."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>First ask me which line on my site is most me, and which is the most generic. Wait for my answer.
 
@@ -4679,6 +4760,8 @@ Then start a fresh subagent to read `module-1/site.html` cold. It gets the page 
 
 <!--prompt-callouts [{"at":"First ask me","say":"Your pick comes first, so the critic's cannot steer it."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>First ask me which line on my site is most me, and which is the most generic. Wait for my answer.
 
 Then start a fresh subagent to read `module-1/site.html` cold. It gets the page and nothing from this session. Have it quote two lines: the one most uniquely this person (not the best line, the one nobody else could have written), and the most generic one, which could sit on anyone&#39;s site. Show its picks beside mine.
@@ -4691,6 +4774,8 @@ Then start a fresh subagent to read `module-1/site.html` cold. It gets the page 
 
 <!--prompt-callouts [{"at":"First ask me","say":"Your pick comes first, so the critic's cannot steer it."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>First ask me which line on my site is most me, and which is the most generic. Wait for my answer.
 
 Then start a fresh subagent to read `module-1/site.html` cold. It gets the page and nothing from this session. Have it quote two lines: the one most uniquely this person (not the best line, the one nobody else could have written), and the most generic one, which could sit on anyone&#39;s site. Show its picks beside mine.
@@ -4702,6 +4787,8 @@ Then start a fresh subagent to read `module-1/site.html` cold. It gets the page 
 <!--prompt-key a101-m1-debrief-cold-critic-->
 
 <!--prompt-callouts [{"at":"First ask me","say":"Your pick comes first, so the critic's cannot steer it."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>First ask me which line on my site is most me, and which is the most generic. Wait for my answer.
 
@@ -5518,6 +5605,8 @@ Rules:
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key build-your-challenge-memory-5-->
 
+<!--prompt-your-call-->
+
 <pre><code>Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 
 1. What recurring job should this agent do for my challenge? One sentence, e.g., &quot;draft a next-step memo for my CEO,&quot; &quot;surface three risks for next week&#39;s stakeholder meeting,&quot; &quot;synthesize three talking points on progress so far.&quot;
@@ -5530,6 +5619,8 @@ Pick a filename from the job. Show me the file before saving.
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key build-your-challenge-memory-5-->
+
+<!--prompt-your-call-->
 
 <pre><code>Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 
@@ -5544,6 +5635,8 @@ Pick a filename from the job. Show me the file before saving.
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key build-your-challenge-memory-5-->
 
+<!--prompt-your-call-->
+
 <pre><code>Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 
 1. What recurring job should this agent do for my challenge? One sentence, e.g., &quot;draft a next-step memo for my CEO,&quot; &quot;surface three risks for next week&#39;s stakeholder meeting,&quot; &quot;synthesize three talking points on progress so far.&quot;
@@ -5556,6 +5649,8 @@ Pick a filename from the job. Show me the file before saving.
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key build-your-challenge-memory-5-->
+
+<!--prompt-your-call-->
 
 <pre><code>Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 
@@ -5570,6 +5665,8 @@ Pick a filename from the job. Show me the file before saving.
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key build-your-challenge-memory-5-->
 
+<!--prompt-your-call-->
+
 <pre><code>Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 
 1. What recurring job should this agent do for my challenge? One sentence, e.g., &quot;draft a next-step memo for my CEO,&quot; &quot;surface three risks for next week&#39;s stakeholder meeting,&quot; &quot;synthesize three talking points on progress so far.&quot;
@@ -5583,6 +5680,8 @@ Pick a filename from the job. Show me the file before saving.
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key build-your-challenge-memory-5-->
 
+<!--prompt-your-call-->
+
 <pre><code>Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 
 1. What recurring job should this agent do for my challenge? One sentence, e.g., &quot;draft a next-step memo for my CEO,&quot; &quot;surface three risks for next week&#39;s stakeholder meeting,&quot; &quot;synthesize three talking points on progress so far.&quot;
@@ -5595,6 +5694,8 @@ Pick a filename from the job. Show me the file before saving.
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key build-your-challenge-memory-5-->
+
+<!--prompt-your-call-->
 
 <pre><code>Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 
@@ -5784,6 +5885,8 @@ New source:
 
 <!--prompt-callouts [{"at":"Report up to six","say":"A limit, and permission to find nothing, keep the agent from inventing issues."},{"at":"Of the issues you found","say":"Agents state every finding with the same confidence. This line asks which one to doubt."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don&#39;t have one; older pages that likely went stale given what&#39;s in the newer sources. Also check that index.md links every page in memory/.
 
 Report up to six, real issues only. If a category is clean, say so and move on. An empty category is a valid finding, not a quota to fill. For each, propose a specific fix and rate severity: high (would mislead a decision), medium (missing signal), low (cosmetic).
@@ -5799,6 +5902,8 @@ Don&#39;t apply anything yet. Ask me to approve or reject each one.
 <!--prompt-key build-your-challenge-memory-8-->
 
 <!--prompt-callouts [{"at":"Report up to six","say":"A limit, and permission to find nothing, keep the agent from inventing issues."},{"at":"Of the issues you found","say":"Agents state every finding with the same confidence. This line asks which one to doubt."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don&#39;t have one; older pages that likely went stale given what&#39;s in the newer sources. Also check that index.md links every page in memory/.
 
@@ -5816,6 +5921,8 @@ Don&#39;t apply anything yet. Ask me to approve or reject each one.
 
 <!--prompt-callouts [{"at":"Report up to six","say":"A limit, and permission to find nothing, keep the agent from inventing issues."},{"at":"Of the issues you found","say":"Agents state every finding with the same confidence. This line asks which one to doubt."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don&#39;t have one; older pages that likely went stale given what&#39;s in the newer sources. Also check that index.md links every page in memory/.
 
 Report up to six, real issues only. If a category is clean, say so and move on. An empty category is a valid finding, not a quota to fill. For each, propose a specific fix and rate severity: high (would mislead a decision), medium (missing signal), low (cosmetic).
@@ -5831,6 +5938,8 @@ Don&#39;t apply anything yet. Ask me to approve or reject each one.
 <!--prompt-key build-your-challenge-memory-8-->
 
 <!--prompt-callouts [{"at":"Report up to six","say":"A limit, and permission to find nothing, keep the agent from inventing issues."},{"at":"Of the issues you found","say":"Agents state every finding with the same confidence. This line asks which one to doubt."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don&#39;t have one; older pages that likely went stale given what&#39;s in the newer sources. Also check that index.md links every page in memory/.
 
@@ -5848,6 +5957,8 @@ Don&#39;t apply anything yet. Ask me to approve or reject each one.
 
 <!--prompt-callouts [{"at":"Report up to six","say":"A limit, and permission to find nothing, keep the agent from inventing issues."},{"at":"Of the issues you found","say":"Agents state every finding with the same confidence. This line asks which one to doubt."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don&#39;t have one; older pages that likely went stale given what&#39;s in the newer sources. Also check that index.md links every page in memory/.
 
 Report up to six, real issues only. If a category is clean, say so and move on. An empty category is a valid finding, not a quota to fill. For each, propose a specific fix and rate severity: high (would mislead a decision), medium (missing signal), low (cosmetic).
@@ -5864,6 +5975,8 @@ Don&#39;t apply anything yet. Ask me to approve or reject each one.
 
 <!--prompt-callouts [{"at":"Report up to six","say":"A limit, and permission to find nothing, keep the agent from inventing issues."},{"at":"Of the issues you found","say":"Agents state every finding with the same confidence. This line asks which one to doubt."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don&#39;t have one; older pages that likely went stale given what&#39;s in the newer sources. Also check that index.md links every page in memory/.
 
 Report up to six, real issues only. If a category is clean, say so and move on. An empty category is a valid finding, not a quota to fill. For each, propose a specific fix and rate severity: high (would mislead a decision), medium (missing signal), low (cosmetic).
@@ -5879,6 +5992,8 @@ Don&#39;t apply anything yet. Ask me to approve or reject each one.
 <!--prompt-key build-your-challenge-memory-8-->
 
 <!--prompt-callouts [{"at":"Report up to six","say":"A limit, and permission to find nothing, keep the agent from inventing issues."},{"at":"Of the issues you found","say":"Agents state every finding with the same confidence. This line asks which one to doubt."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don&#39;t have one; older pages that likely went stale given what&#39;s in the newer sources. Also check that index.md links every page in memory/.
 
@@ -6001,7 +6116,7 @@ Question:
 </code></pre>
 </div>
 
-<p>Compare the two answers. Where the system cites your sources and the bare answer cannot, your memory and rules made the difference. A line built on the Phase 3 source shows the memory growing. Where both answers are generic, the memory is thin, and the agent adds that gap to the memory&#39;s open questions.</p>
+<p><strong>Look</strong> Compare the two answers. Where the system cites your sources and the bare answer cannot, your memory and rules made the difference. A line built on the Phase 3 source shows the memory growing. Where both answers are generic, the memory is thin, and the agent adds that gap to the memory&#39;s open questions.</p>
 <h2 id="take-stock-of-the-system-you-built">Take stock of the system you built</h2>
 <p><strong>What happened:</strong></p>
 <p>A memory is <em>files you keep</em>, not a thread you close.</p>
@@ -6517,7 +6632,7 @@ When I&#39;ve answered all three, write the file at module-2/morning-agent/morni
 </code></pre>
 </div>
 
-<p>Save, run it once and open <code>latest.html</code>. It should look like your chosen site; plain default styling means the agent did not use the style file, so ask it to try again. To fix anything, tell the agent what to change, and it updates the instructions or the style file. The scheduling prompt names both files, so tomorrow&#39;s run picks up the change.</p>
+<p><strong>Look</strong> Save, run it once and open <code>latest.html</code>. It should look like your chosen site; plain default styling means the agent did not use the style file, so ask it to try again. To fix anything, tell the agent what to change, and it updates the instructions or the style file. The scheduling prompt names both files, so tomorrow&#39;s run picks up the change.</p>
 <h2 id="phase-5-let-it-run-for-a-week">Phase 5: Let it run for a week</h2>
 <p><em>4 min</em></p>
 <p>For the first three days, don&#39;t retune. Open <code>module-2/morning-agent/latest.html</code> each morning and watch for:</p>
@@ -7768,6 +7883,8 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel: diagnosis (what&#39;s reall
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key three-minds-one-synthesis-4-->
 
+<!--prompt-your-call-->
+
 <pre><code>Copy `./crux.md` as it stands to `module-3/briefing-baseline.md`. Change nothing in the briefing. Ask me which line of `## Answer` I trust least. Append `## Doubted line` to the copy: that line quoted word for word as a blockquote, then `Why:` and my reason in one sentence. Leave `./crux.md` as it is.
 </code></pre>
 </div>
@@ -7775,6 +7892,8 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel: diagnosis (what&#39;s reall
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key three-minds-one-synthesis-4-->
+
+<!--prompt-your-call-->
 
 <pre><code>Copy `./crux.md` as it stands to `module-3/briefing-baseline.md`. Change nothing in the briefing. Ask me which line of `## Answer` I trust least. Append `## Doubted line` to the copy: that line quoted word for word as a blockquote, then `Why:` and my reason in one sentence. Leave `./crux.md` as it is.
 </code></pre>
@@ -7784,6 +7903,8 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel: diagnosis (what&#39;s reall
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key three-minds-one-synthesis-4-->
 
+<!--prompt-your-call-->
+
 <pre><code>Copy `./crux.md` as it stands to `module-3/briefing-baseline.md`. Change nothing in the briefing. Ask me which line of `## Answer` I trust least. Append `## Doubted line` to the copy: that line quoted word for word as a blockquote, then `Why:` and my reason in one sentence. Leave `./crux.md` as it is.
 </code></pre>
 </div>
@@ -7791,6 +7912,8 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel: diagnosis (what&#39;s reall
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key three-minds-one-synthesis-4-->
+
+<!--prompt-your-call-->
 
 <pre><code>Copy `./crux.md` as it stands to `module-3/briefing-baseline.md`. Change nothing in the briefing. Ask me which line of `## Answer` I trust least. Append `## Doubted line` to the copy: that line quoted word for word as a blockquote, then `Why:` and my reason in one sentence. Leave `./crux.md` as it is.
 </code></pre>
@@ -7800,6 +7923,8 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel: diagnosis (what&#39;s reall
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key three-minds-one-synthesis-4-->
 
+<!--prompt-your-call-->
+
 <pre><code>Copy `./crux.md` as it stands to `module-3/briefing-baseline.md`. Change nothing in the briefing. Ask me which line of `## Answer` I trust least. Append `## Doubted line` to the copy: that line quoted word for word as a blockquote, then `Why:` and my reason in one sentence. Leave `./crux.md` as it is.
 </code></pre>
 </div>
@@ -7808,6 +7933,8 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel: diagnosis (what&#39;s reall
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key three-minds-one-synthesis-4-->
 
+<!--prompt-your-call-->
+
 <pre><code>Copy `./crux.md` as it stands to `module-3/briefing-baseline.md`. Change nothing in the briefing. Ask me which line of `## Answer` I trust least. Append `## Doubted line` to the copy: that line quoted word for word as a blockquote, then `Why:` and my reason in one sentence. Leave `./crux.md` as it is.
 </code></pre>
 </div>
@@ -7815,6 +7942,8 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel: diagnosis (what&#39;s reall
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key three-minds-one-synthesis-4-->
+
+<!--prompt-your-call-->
 
 <pre><code>Copy `./crux.md` as it stands to `module-3/briefing-baseline.md`. Change nothing in the briefing. Ask me which line of `## Answer` I trust least. Append `## Doubted line` to the copy: that line quoted word for word as a blockquote, then `Why:` and my reason in one sentence. Leave `./crux.md` as it is.
 </code></pre>
@@ -8464,6 +8593,8 @@ If restructuring is needed, propose the renames, merges, splits, or drops. Show 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key author-security-skill-guess-->
 
+<!--prompt-your-call-->
+
 <pre><code>Do not audit anything yet. Show me the answer under `## Answer` in `./crux.md`, and list the files in `agents/` and `memory/` by name only.
 
 Then ask me one question: judged only from what this system has produced, is it safe to run for real, and what, if anything, is wrong with it? Name the problems you see, or say you see none.
@@ -8475,6 +8606,8 @@ Write my answer word for word to `module-4/guess.md`. Do not comment on it.
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key author-security-skill-guess-->
+
+<!--prompt-your-call-->
 
 <pre><code>Do not audit anything yet. Show me the answer under `## Answer` in `./crux.md`, and list the files in `agents/` and `memory/` by name only.
 
@@ -8488,6 +8621,8 @@ Write my answer word for word to `module-4/guess.md`. Do not comment on it.
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key author-security-skill-guess-->
 
+<!--prompt-your-call-->
+
 <pre><code>Do not audit anything yet. Show me the answer under `## Answer` in `./crux.md`, and list the files in `agents/` and `memory/` by name only.
 
 Then ask me one question: judged only from what this system has produced, is it safe to run for real, and what, if anything, is wrong with it? Name the problems you see, or say you see none.
@@ -8499,6 +8634,8 @@ Write my answer word for word to `module-4/guess.md`. Do not comment on it.
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key author-security-skill-guess-->
+
+<!--prompt-your-call-->
 
 <pre><code>Do not audit anything yet. Show me the answer under `## Answer` in `./crux.md`, and list the files in `agents/` and `memory/` by name only.
 
@@ -8512,6 +8649,8 @@ Write my answer word for word to `module-4/guess.md`. Do not comment on it.
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key author-security-skill-guess-->
 
+<!--prompt-your-call-->
+
 <pre><code>Do not audit anything yet. Show me the answer under `## Answer` in `./crux.md`, and list the files in `agents/` and `memory/` by name only.
 
 Then ask me one question: judged only from what this system has produced, is it safe to run for real, and what, if anything, is wrong with it? Name the problems you see, or say you see none.
@@ -8524,6 +8663,8 @@ Write my answer word for word to `module-4/guess.md`. Do not comment on it.
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key author-security-skill-guess-->
 
+<!--prompt-your-call-->
+
 <pre><code>Do not audit anything yet. Show me the answer under `## Answer` in `./crux.md`, and list the files in `agents/` and `memory/` by name only.
 
 Then ask me one question: judged only from what this system has produced, is it safe to run for real, and what, if anything, is wrong with it? Name the problems you see, or say you see none.
@@ -8535,6 +8676,8 @@ Write my answer word for word to `module-4/guess.md`. Do not comment on it.
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key author-security-skill-guess-->
+
+<!--prompt-your-call-->
 
 <pre><code>Do not audit anything yet. Show me the answer under `## Answer` in `./crux.md`, and list the files in `agents/` and `memory/` by name only.
 
@@ -8683,6 +8826,8 @@ Do not create a skill yet. This is the raw run.
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key author-security-skill-2-->
 
+<!--prompt-your-call-->
+
 <pre><code>I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
 
 Before you read or write any package files, ask me for 3-5 lines about what matters from my own head: the data, policy rule, customer, source, workflow, or failure mode I most want this reusable check to catch. Wait for my answer.
@@ -8694,6 +8839,8 @@ After I answer, read outputs/policy-report-raw.md and everything in module-4/pol
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key author-security-skill-2-->
+
+<!--prompt-your-call-->
 
 <pre><code>I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
 
@@ -8707,6 +8854,8 @@ After I answer, read outputs/policy-report-raw.md and everything in module-4/pol
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key author-security-skill-2-->
 
+<!--prompt-your-call-->
+
 <pre><code>I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
 
 Before you read or write any package files, ask me for 3-5 lines about what matters from my own head: the data, policy rule, customer, source, workflow, or failure mode I most want this reusable check to catch. Wait for my answer.
@@ -8718,6 +8867,8 @@ After I answer, read outputs/policy-report-raw.md and everything in module-4/pol
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key author-security-skill-2-->
+
+<!--prompt-your-call-->
 
 <pre><code>I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root AGENTS.md, and the multi-agent runs in module-3/stances/.
 
@@ -8731,6 +8882,8 @@ After I answer, read outputs/policy-report-raw.md and everything in module-4/pol
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key author-security-skill-2-->
 
+<!--prompt-your-call-->
+
 <pre><code>I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root AGENTS.md, and the multi-agent runs in module-3/stances/.
 
 Before you read or write any package files, ask me for 3-5 lines about what matters from my own head: the data, policy rule, customer, source, workflow, or failure mode I most want this reusable check to catch. Wait for my answer.
@@ -8743,6 +8896,8 @@ After I answer, read outputs/policy-report-raw.md and everything in module-4/pol
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key author-security-skill-2-->
 
+<!--prompt-your-call-->
+
 <pre><code>I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root AGENTS.md, and the multi-agent runs in module-3/stances/.
 
 Before you read or write any package files, ask me for 3-5 lines about what matters from my own head: the data, policy rule, customer, source, workflow, or failure mode I most want this reusable check to catch. Wait for my answer.
@@ -8754,6 +8909,8 @@ After I answer, read outputs/policy-report-raw.md and everything in module-4/pol
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key author-security-skill-2-->
+
+<!--prompt-your-call-->
 
 <pre><code>I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root AGENTS.md, and the multi-agent runs in module-3/stances/.
 
@@ -9425,6 +9582,8 @@ Write the report to outputs/security-report.md. Include the ranked mitigation su
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key audit-your-agent-3-->
 
+<!--prompt-your-call-->
+
 <pre><code>Mitigate the risk I name below. Pick the shape that fits it (scope, split, filter, gate or review), make the changes, and tell me what you did and why.
 
 Then run the same check again for this one risk and tell me the new verdict: is the risk reduced, gone, or moved somewhere else?
@@ -9438,6 +9597,8 @@ The risk:
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key audit-your-agent-3-->
+
+<!--prompt-your-call-->
 
 <pre><code>Mitigate the risk I name below. Pick the shape that fits it (scope, split, filter, gate or review), make the changes, and tell me what you did and why.
 
@@ -9453,6 +9614,8 @@ The risk:
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key audit-your-agent-3-->
 
+<!--prompt-your-call-->
+
 <pre><code>Mitigate the risk I name below. Pick the shape that fits it (scope, split, filter, gate or review), make the changes, and tell me what you did and why.
 
 Then run the same check again for this one risk and tell me the new verdict: is the risk reduced, gone, or moved somewhere else?
@@ -9466,6 +9629,8 @@ The risk:
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key audit-your-agent-3-->
+
+<!--prompt-your-call-->
 
 <pre><code>Mitigate the risk I name below. Pick the shape that fits it (scope, split, filter, gate or review), make the changes, and tell me what you did and why.
 
@@ -9481,6 +9646,8 @@ The risk:
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key audit-your-agent-3-->
 
+<!--prompt-your-call-->
+
 <pre><code>Mitigate the risk I name below. Pick the shape that fits it (scope, split, filter, gate or review), make the changes, and tell me what you did and why.
 
 Then run the same check again for this one risk and tell me the new verdict: is the risk reduced, gone, or moved somewhere else?
@@ -9495,6 +9662,8 @@ The risk:
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key audit-your-agent-3-->
 
+<!--prompt-your-call-->
+
 <pre><code>Mitigate the risk I name below. Pick the shape that fits it (scope, split, filter, gate or review), make the changes, and tell me what you did and why.
 
 Then run the same check again for this one risk and tell me the new verdict: is the risk reduced, gone, or moved somewhere else?
@@ -9508,6 +9677,8 @@ The risk:
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key audit-your-agent-3-->
+
+<!--prompt-your-call-->
 
 <pre><code>Mitigate the risk I name below. Pick the shape that fits it (scope, split, filter, gate or review), make the changes, and tell me what you did and why.
 
@@ -10432,6 +10603,8 @@ Spawn all four in parallel. When they finish, confirm that these four files exis
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key hallucination-bakeoff-marks-->
 
+<!--prompt-your-call-->
+
 <pre><code>Show me five claims from `module-5/claim-pool.md` with their numbers: a mix of shapes, at least one you would expect to be hard. Do not tell me your view of any of them.
 
 For each, I answer grounded or not grounded, with one line on why. Write my answers to `module-5/my-marks.md`, one line per claim, in this form with my words kept:
@@ -10443,6 +10616,8 @@ For each, I answer grounded or not grounded, with one line on why. Write my answ
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key hallucination-bakeoff-marks-->
+
+<!--prompt-your-call-->
 
 <pre><code>Show me five claims from `module-5/claim-pool.md` with their numbers: a mix of shapes, at least one you would expect to be hard. Do not tell me your view of any of them.
 
@@ -10456,6 +10631,8 @@ For each, I answer grounded or not grounded, with one line on why. Write my answ
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key hallucination-bakeoff-marks-->
 
+<!--prompt-your-call-->
+
 <pre><code>Show me five claims from `module-5/claim-pool.md` with their numbers: a mix of shapes, at least one you would expect to be hard. Do not tell me your view of any of them.
 
 For each, I answer grounded or not grounded, with one line on why. Write my answers to `module-5/my-marks.md`, one line per claim, in this form with my words kept:
@@ -10467,6 +10644,8 @@ For each, I answer grounded or not grounded, with one line on why. Write my answ
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key hallucination-bakeoff-marks-->
+
+<!--prompt-your-call-->
 
 <pre><code>Show me five claims from `module-5/claim-pool.md` with their numbers: a mix of shapes, at least one you would expect to be hard. Do not tell me your view of any of them.
 
@@ -10480,6 +10659,8 @@ For each, I answer grounded or not grounded, with one line on why. Write my answ
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key hallucination-bakeoff-marks-->
 
+<!--prompt-your-call-->
+
 <pre><code>Show me five claims from `module-5/claim-pool.md` with their numbers: a mix of shapes, at least one you would expect to be hard. Do not tell me your view of any of them.
 
 For each, I answer grounded or not grounded, with one line on why. Write my answers to `module-5/my-marks.md`, one line per claim, in this form with my words kept:
@@ -10492,6 +10673,8 @@ For each, I answer grounded or not grounded, with one line on why. Write my answ
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key hallucination-bakeoff-marks-->
 
+<!--prompt-your-call-->
+
 <pre><code>Show me five claims from `module-5/claim-pool.md` with their numbers: a mix of shapes, at least one you would expect to be hard. Do not tell me your view of any of them.
 
 For each, I answer grounded or not grounded, with one line on why. Write my answers to `module-5/my-marks.md`, one line per claim, in this form with my words kept:
@@ -10503,6 +10686,8 @@ For each, I answer grounded or not grounded, with one line on why. Write my answ
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key hallucination-bakeoff-marks-->
+
+<!--prompt-your-call-->
 
 <pre><code>Show me five claims from `module-5/claim-pool.md` with their numbers: a mix of shapes, at least one you would expect to be hard. Do not tell me your view of any of them.
 
@@ -10881,6 +11066,8 @@ Use the scoreboard at `module-5/scoreboard.md` for the examples and point at spe
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key hallucination-bakeoff-7-->
 
+<!--prompt-your-call-->
+
 <pre><code>Two things, in the chat.
 
 First, three lines on the classic way:
@@ -10895,6 +11082,8 @@ Second, ask me which row of the scoreboard surprised me most: the detector that 
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key hallucination-bakeoff-7-->
+
+<!--prompt-your-call-->
 
 <pre><code>Two things, in the chat.
 
@@ -10911,6 +11100,8 @@ Second, ask me which row of the scoreboard surprised me most: the detector that 
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key hallucination-bakeoff-7-->
 
+<!--prompt-your-call-->
+
 <pre><code>Two things, in the chat.
 
 First, three lines on the classic way:
@@ -10925,6 +11116,8 @@ Second, ask me which row of the scoreboard surprised me most: the detector that 
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key hallucination-bakeoff-7-->
+
+<!--prompt-your-call-->
 
 <pre><code>Two things, in the chat.
 
@@ -10941,6 +11134,8 @@ Second, ask me which row of the scoreboard surprised me most: the detector that 
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key hallucination-bakeoff-7-->
 
+<!--prompt-your-call-->
+
 <pre><code>Two things, in the chat.
 
 First, three lines on the classic way:
@@ -10956,6 +11151,8 @@ Second, ask me which row of the scoreboard surprised me most: the detector that 
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key hallucination-bakeoff-7-->
 
+<!--prompt-your-call-->
+
 <pre><code>Two things, in the chat.
 
 First, three lines on the classic way:
@@ -10970,6 +11167,8 @@ Second, ask me which row of the scoreboard surprised me most: the detector that 
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key hallucination-bakeoff-7-->
+
+<!--prompt-your-call-->
 
 <pre><code>Two things, in the chat.
 
@@ -11117,6 +11316,8 @@ At the end of the file, add a one-line &quot;Known limit:&quot; naming the failu
 
 <!--prompt-callouts [{"at":"Then open `module-3/briefing-baseline.md`","say":"You answer before you see the verdict, so the judge cannot steer you."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Run `judges/groundedness-judge.md` on `module-5/briefing.md` with the files in `module-5/evidence-roster.md`. Write `module-5/baseline-score.md` with a section `## Module 3 briefing`: how many claims in `module-5/adjudicated-claims.md` are grounded, partly grounded and ungrounded, out of how many. Add a section `## Judge on the Module 3 briefing` with the number of claims judged and the number flagged.
 
 Then open `module-3/briefing-baseline.md` and show me the line under `## Doubted line`. Let me say if I still doubt it, then show me the judge&#39;s verdict on it, and the evidence lines from `module-5/adjudicated-claims.md` that bear on it, or &quot;no support in the roster&quot;. Do not tell me whether my doubt was right.
@@ -11130,6 +11331,8 @@ Append a section `## Doubted line` to `module-5/baseline-score.md` with the line
 <!--prompt-key hallucination-bakeoff-9-->
 
 <!--prompt-callouts [{"at":"Then open `module-3/briefing-baseline.md`","say":"You answer before you see the verdict, so the judge cannot steer you."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Run `judges/groundedness-judge.md` on `module-5/briefing.md` with the files in `module-5/evidence-roster.md`. Write `module-5/baseline-score.md` with a section `## Module 3 briefing`: how many claims in `module-5/adjudicated-claims.md` are grounded, partly grounded and ungrounded, out of how many. Add a section `## Judge on the Module 3 briefing` with the number of claims judged and the number flagged.
 
@@ -11145,6 +11348,8 @@ Append a section `## Doubted line` to `module-5/baseline-score.md` with the line
 
 <!--prompt-callouts [{"at":"Then open `module-3/briefing-baseline.md`","say":"You answer before you see the verdict, so the judge cannot steer you."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Run `judges/groundedness-judge.md` on `module-5/briefing.md` with the files in `module-5/evidence-roster.md`. Write `module-5/baseline-score.md` with a section `## Module 3 briefing`: how many claims in `module-5/adjudicated-claims.md` are grounded, partly grounded and ungrounded, out of how many. Add a section `## Judge on the Module 3 briefing` with the number of claims judged and the number flagged.
 
 Then open `module-3/briefing-baseline.md` and show me the line under `## Doubted line`. Let me say if I still doubt it, then show me the judge&#39;s verdict on it, and the evidence lines from `module-5/adjudicated-claims.md` that bear on it, or &quot;no support in the roster&quot;. Do not tell me whether my doubt was right.
@@ -11158,6 +11363,8 @@ Append a section `## Doubted line` to `module-5/baseline-score.md` with the line
 <!--prompt-key hallucination-bakeoff-9-->
 
 <!--prompt-callouts [{"at":"Then open `module-3/briefing-baseline.md`","say":"You answer before you see the verdict, so the judge cannot steer you."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Run `judges/groundedness-judge.md` on `module-5/briefing.md` with the files in `module-5/evidence-roster.md`. Write `module-5/baseline-score.md` with a section `## Module 3 briefing`: how many claims in `module-5/adjudicated-claims.md` are grounded, partly grounded and ungrounded, out of how many. Add a section `## Judge on the Module 3 briefing` with the number of claims judged and the number flagged.
 
@@ -11173,6 +11380,8 @@ Append a section `## Doubted line` to `module-5/baseline-score.md` with the line
 
 <!--prompt-callouts [{"at":"Then open `module-3/briefing-baseline.md`","say":"You answer before you see the verdict, so the judge cannot steer you."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Run `judges/groundedness-judge.md` on `module-5/briefing.md` with the files in `module-5/evidence-roster.md`. Write `module-5/baseline-score.md` with a section `## Module 3 briefing`: how many claims in `module-5/adjudicated-claims.md` are grounded, partly grounded and ungrounded, out of how many. Add a section `## Judge on the Module 3 briefing` with the number of claims judged and the number flagged.
 
 Then open `module-3/briefing-baseline.md` and show me the line under `## Doubted line`. Let me say if I still doubt it, then show me the judge&#39;s verdict on it, and the evidence lines from `module-5/adjudicated-claims.md` that bear on it, or &quot;no support in the roster&quot;. Do not tell me whether my doubt was right.
@@ -11187,6 +11396,8 @@ Append a section `## Doubted line` to `module-5/baseline-score.md` with the line
 
 <!--prompt-callouts [{"at":"Then open `module-3/briefing-baseline.md`","say":"You answer before you see the verdict, so the judge cannot steer you."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Run `judges/groundedness-judge.md` on `module-5/briefing.md` with the files in `module-5/evidence-roster.md`. Write `module-5/baseline-score.md` with a section `## Module 3 briefing`: how many claims in `module-5/adjudicated-claims.md` are grounded, partly grounded and ungrounded, out of how many. Add a section `## Judge on the Module 3 briefing` with the number of claims judged and the number flagged.
 
 Then open `module-3/briefing-baseline.md` and show me the line under `## Doubted line`. Let me say if I still doubt it, then show me the judge&#39;s verdict on it, and the evidence lines from `module-5/adjudicated-claims.md` that bear on it, or &quot;no support in the roster&quot;. Do not tell me whether my doubt was right.
@@ -11200,6 +11411,8 @@ Append a section `## Doubted line` to `module-5/baseline-score.md` with the line
 <!--prompt-key hallucination-bakeoff-9-->
 
 <!--prompt-callouts [{"at":"Then open `module-3/briefing-baseline.md`","say":"You answer before you see the verdict, so the judge cannot steer you."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Run `judges/groundedness-judge.md` on `module-5/briefing.md` with the files in `module-5/evidence-roster.md`. Write `module-5/baseline-score.md` with a section `## Module 3 briefing`: how many claims in `module-5/adjudicated-claims.md` are grounded, partly grounded and ungrounded, out of how many. Add a section `## Judge on the Module 3 briefing` with the number of claims judged and the number flagged.
 
@@ -11797,7 +12010,7 @@ Do not stop for confirmation between rounds.
 </code></pre>
 </div>
 
-<p>When round 1 is done, open the newest briefing in <code>module-6/runs/</code> and read it the way the person receiving it would. Tell the agent two or three remarks in plain words, and it adds them to <code>./remarks.md</code>: <em>&quot;too hedged&quot;</em>, <em>&quot;this number is not ours&quot;</em>, <em>&quot;lead with the decision&quot;</em>.</p>
+<p><strong>Look</strong> When round 1 is done, open the newest briefing in <code>module-6/runs/</code> and read it the way the person receiving it would. Tell the agent two or three remarks in plain words, and it adds them to <code>./remarks.md</code>: <em>&quot;too hedged&quot;</em>, <em>&quot;this number is not ours&quot;</em>, <em>&quot;lead with the decision&quot;</em>.</p>
 <p>Leave the loop running. The next rounds turn your remarks into rules. The judge never sees them.</p>
 <p>Then ask how the loop could try more options at once.</p>
 <div class="rt-profile rt-profile-cowork">
@@ -12037,6 +12250,8 @@ Then answer in five bullets:
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key eval-loop-spot-check-->
 
+<!--prompt-your-call-->
+
 <pre><code>Show me three claims from the last round&#39;s briefing in module-6/runs/, numbered, without saying which the judge flagged. Wait for my three marks: grounded or not grounded, and one line why.
 
 Then append my three marks to module-5/my-marks.md in its line format, with source round-N and the judge&#39;s side: not grounded if that round&#39;s judgment.md flags the claim, grounded if not. End with one line: across all my marks, where the judge and I disagree, and what that says the judge cannot see.
@@ -12046,6 +12261,8 @@ Then append my three marks to module-5/my-marks.md in its line format, with sour
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key eval-loop-spot-check-->
+
+<!--prompt-your-call-->
 
 <pre><code>Show me three claims from the last round&#39;s briefing in module-6/runs/, numbered, without saying which the judge flagged. Wait for my three marks: grounded or not grounded, and one line why.
 
@@ -12057,6 +12274,8 @@ Then append my three marks to module-5/my-marks.md in its line format, with sour
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key eval-loop-spot-check-->
 
+<!--prompt-your-call-->
+
 <pre><code>Show me three claims from the last round&#39;s briefing in module-6/runs/, numbered, without saying which the judge flagged. Wait for my three marks: grounded or not grounded, and one line why.
 
 Then append my three marks to module-5/my-marks.md in its line format, with source round-N and the judge&#39;s side: not grounded if that round&#39;s judgment.md flags the claim, grounded if not. End with one line: across all my marks, where the judge and I disagree, and what that says the judge cannot see.
@@ -12066,6 +12285,8 @@ Then append my three marks to module-5/my-marks.md in its line format, with sour
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key eval-loop-spot-check-->
+
+<!--prompt-your-call-->
 
 <pre><code>Show me three claims from the last round&#39;s briefing in module-6/runs/, numbered, without saying which the judge flagged. Wait for my three marks: grounded or not grounded, and one line why.
 
@@ -12077,6 +12298,8 @@ Then append my three marks to module-5/my-marks.md in its line format, with sour
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key eval-loop-spot-check-->
 
+<!--prompt-your-call-->
+
 <pre><code>Show me three claims from the last round&#39;s briefing in module-6/runs/, numbered, without saying which the judge flagged. Wait for my three marks: grounded or not grounded, and one line why.
 
 Then append my three marks to module-5/my-marks.md in its line format, with source round-N and the judge&#39;s side: not grounded if that round&#39;s judgment.md flags the claim, grounded if not. End with one line: across all my marks, where the judge and I disagree, and what that says the judge cannot see.
@@ -12087,6 +12310,8 @@ Then append my three marks to module-5/my-marks.md in its line format, with sour
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key eval-loop-spot-check-->
 
+<!--prompt-your-call-->
+
 <pre><code>Show me three claims from the last round&#39;s briefing in module-6/runs/, numbered, without saying which the judge flagged. Wait for my three marks: grounded or not grounded, and one line why.
 
 Then append my three marks to module-5/my-marks.md in its line format, with source round-N and the judge&#39;s side: not grounded if that round&#39;s judgment.md flags the claim, grounded if not. End with one line: across all my marks, where the judge and I disagree, and what that says the judge cannot see.
@@ -12096,6 +12321,8 @@ Then append my three marks to module-5/my-marks.md in its line format, with sour
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key eval-loop-spot-check-->
+
+<!--prompt-your-call-->
 
 <pre><code>Show me three claims from the last round&#39;s briefing in module-6/runs/, numbered, without saying which the judge flagged. Wait for my three marks: grounded or not grounded, and one line why.
 
@@ -12305,6 +12532,8 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 
 <!--prompt-callouts [{"at":"If I choose a vague word","say":"A quality can be scored once it is something you can observe."},{"at":"Once the dimension is clear","say":"Examples at 5, 3 and 1 anchor the scale better than a definition."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
 
 Groundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.
@@ -12339,6 +12568,8 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 <!--prompt-key new-human-role-in-the-loop-1-->
 
 <!--prompt-callouts [{"at":"If I choose a vague word","say":"A quality can be scored once it is something you can observe."},{"at":"Once the dimension is clear","say":"Examples at 5, 3 and 1 anchor the scale better than a definition."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
 
@@ -12375,6 +12606,8 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 
 <!--prompt-callouts [{"at":"If I choose a vague word","say":"A quality can be scored once it is something you can observe."},{"at":"Once the dimension is clear","say":"Examples at 5, 3 and 1 anchor the scale better than a definition."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
 
 Groundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.
@@ -12409,6 +12642,8 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 <!--prompt-key new-human-role-in-the-loop-1-->
 
 <!--prompt-callouts [{"at":"If I choose a vague word","say":"A quality can be scored once it is something you can observe."},{"at":"Once the dimension is clear","say":"Examples at 5, 3 and 1 anchor the scale better than a definition."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
 
@@ -12445,6 +12680,8 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 
 <!--prompt-callouts [{"at":"If I choose a vague word","say":"A quality can be scored once it is something you can observe."},{"at":"Once the dimension is clear","say":"Examples at 5, 3 and 1 anchor the scale better than a definition."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
 
 Groundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.
@@ -12480,6 +12717,8 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 
 <!--prompt-callouts [{"at":"If I choose a vague word","say":"A quality can be scored once it is something you can observe."},{"at":"Once the dimension is clear","say":"Examples at 5, 3 and 1 anchor the scale better than a definition."}]-->
 
+<!--prompt-your-call-->
+
 <pre><code>Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
 
 Groundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.
@@ -12514,6 +12753,8 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 <!--prompt-key new-human-role-in-the-loop-1-->
 
 <!--prompt-callouts [{"at":"If I choose a vague word","say":"A quality can be scored once it is something you can observe."},{"at":"Once the dimension is clear","say":"Examples at 5, 3 and 1 anchor the scale better than a definition."}]-->
+
+<!--prompt-your-call-->
 
 <pre><code>Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
 
@@ -12846,6 +13087,8 @@ When you&#39;re done, tell me in 3-5 lines what you added, sharpened and removed
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <!--prompt-key pick-one-person-->
 
+<!--prompt-your-call-->
+
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -12862,6 +13105,8 @@ Show me the file before saving.
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <!--prompt-key pick-one-person-->
+
+<!--prompt-your-call-->
 
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
@@ -12880,6 +13125,8 @@ Show me the file before saving.
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <!--prompt-key pick-one-person-->
 
+<!--prompt-your-call-->
+
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -12896,6 +13143,8 @@ Show me the file before saving.
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <!--prompt-key pick-one-person-->
+
+<!--prompt-your-call-->
 
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
@@ -12914,6 +13163,8 @@ Show me the file before saving.
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <!--prompt-key pick-one-person-->
 
+<!--prompt-your-call-->
+
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -12931,6 +13182,8 @@ Show me the file before saving.
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <!--prompt-key pick-one-person-->
 
+<!--prompt-your-call-->
+
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -12947,6 +13200,8 @@ Show me the file before saving.
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <!--prompt-key pick-one-person-->
+
+<!--prompt-your-call-->
 
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
@@ -14452,7 +14707,7 @@ SOFTWARE.
             text = injectAnchorSentinels(text, entry.anchors);
         }
         var fence = '```\n' + text + '\n```';
-        return label + '\n\n' + keyComment(entry && entry.key) + calloutComment(entry && entry.callouts) + fence;
+        return label + '\n\n' + keyComment(entry && entry.key) + calloutComment(entry && entry.callouts) + yourCallComment(entry) + fence;
     }
 
     // The prompt's registry key rides with its block as one HTML comment, the
@@ -14476,6 +14731,14 @@ SOFTWARE.
             .map(function (c) { return { at: String(c.at), say: String(c.say) }; });
         if (!list.length) return '';
         return '<!--prompt-callouts ' + JSON.stringify(list).replace(/--/g, '\\u002d\\u002d').replace(/>/g, '\\u003e') + '-->\n\n';
+    }
+
+    // `your-call: true` in a prompt's frontmatter marks a prompt that waits for
+    // the learner's own judgment (the agent asks and waits, or the prompt ends
+    // on a line the learner fills in). Rides as a comment like the callouts;
+    // the Agents 101 self-study shell (prompt-short.js) shows it as a tag.
+    function yourCallComment(entry) {
+        return entry && entry['your-call'] === true ? '<!--prompt-your-call-->\n\n' : '';
     }
 
     // Replace every `{{runtime-map:<module-slug>}}` line with that module's
@@ -14869,6 +15132,40 @@ SOFTWARE.
             wrap.appendChild(body);
 
             // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
+        });
+    }
+
+    // Look widget. Source shape (single paragraph):
+    //   **Look** <what to open, and one thing to find in it>
+    // Sits at the coming-back moment after a prompt whose result the learner
+    // has to see with their own eyes (a regenerated page, a report, a draft).
+    // Not a hazard (HOX), not general guidance (Note): the learner opens the
+    // result and looks. Same construction and boundary discipline as
+    // decorateNote; run in the same pass, before decoratePrompts.
+    function decorateLook(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'Look') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'look-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'look-block__badge';
+            badge.textContent = 'LOOK';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'look-block__body';
+            wrap.appendChild(body);
+
             strong.remove();
             var msg = document.createElement('p');
             msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
@@ -15301,6 +15598,7 @@ SOFTWARE.
         decorateSessions: decorateSessions,
         decorateHox: decorateHox,
         decorateNote: decorateNote,
+        decorateLook: decorateLook,
         decorateTiming: decorateTiming,
         decoratePrompts: decoratePrompts,
         attachAnchorPopups: attachAnchorPopups,
@@ -16370,6 +16668,7 @@ SOFTWARE.
     CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decorateHox(document.body);
     CurriculumRuntime.decorateNote(document.body);
+    CurriculumRuntime.decorateLook(document.body);
     CurriculumRuntime.decorateTiming(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
@@ -17389,6 +17688,25 @@ SOFTWARE.
     return [];
   }
 
+  // `your-call: true` travels as a comment after the block, like the
+  // callouts. The tag tells a learner at a glance that this prompt waits for
+  // their own judgment.
+  function yourCall(block) {
+    for (var n = block.nextSibling; n && n.nodeType !== 1; n = n.nextSibling) {
+      if (n.nodeType === 8 && /^prompt-your-call\b/.test(n.data)) return true;
+    }
+    return false;
+  }
+
+  function tagYourCall(doc, block) {
+    if (!yourCall(block) || block.querySelector('.prompt-block__yourcall')) return;
+    var dest = block.querySelector('.prompt-block__dest');
+    if (!dest) return;
+    var tag = el(doc, 'span', 'prompt-block__yourcall', 'Your call');
+    tag.title = 'The agent waits for your own judgment here';
+    dest.after(tag);
+  }
+
   function el(doc, tag, cls, text) {
     var e = doc.createElement(tag);
     if (cls) e.className = cls;
@@ -17449,7 +17767,7 @@ SOFTWARE.
   function install(doc) {
     if (doc.body.getAttribute('data-prompt-view') !== 'short' || doc.body.hasAttribute('data-prompt-short-on')) return;
     doc.body.setAttribute('data-prompt-short-on', '');
-    Array.prototype.forEach.call(doc.querySelectorAll('main section.module .prompt-block'), function (b) { build(doc, b); });
+    Array.prototype.forEach.call(doc.querySelectorAll('main section.module .prompt-block'), function (b) { build(doc, b); tagYourCall(doc, b); });
     number(doc);
     // One listener for every toggle, so a cloned block keeps working.
     doc.addEventListener('click', function (ev) {

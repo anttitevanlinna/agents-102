@@ -15,6 +15,7 @@ callouts:
     say: Naming a known method gives the agent the whole method in a few words.
   - at: First help me say X
     say: A rough try is enough. The agent offers sharper versions and you choose.
+your-call: true
 ---
 Position my site with Seth Godin's line: this is for people who believe X.
 

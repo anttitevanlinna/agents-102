@@ -108,7 +108,7 @@ Your question gets two answers: one from a helper agent in an empty folder, the 
 
 {{prompt:build-your-challenge-memory-9}}
 
-Compare the two answers. Where the system cites your sources and the bare answer cannot, your memory and rules made the difference. A line built on the Phase 3 source shows the memory growing. Where both answers are generic, the memory is thin, and the agent adds that gap to the memory's open questions.
+**Look** Compare the two answers. Where the system cites your sources and the bare answer cannot, your memory and rules made the difference. A line built on the Phase 3 source shows the memory growing. Where both answers are generic, the memory is thin, and the agent adds that gap to the memory's open questions.
 
 ## Take stock of the system you built
 

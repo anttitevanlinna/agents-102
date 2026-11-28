@@ -10,6 +10,7 @@ produces:
   - id: m4-guess
     location: module-4/guess.md
     note: the student's verdict from output alone; the raw policy report sets it beside the rows
+your-call: true
 ---
 Do not audit anything yet. Show me the answer under `## Answer` in `./crux.md`, and list the files in `agents/` and `memory/` by name only.
 

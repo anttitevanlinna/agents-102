@@ -9,6 +9,7 @@ requires:
 produces:
   - id: challenge-agent
     location: agents/<job-slug>.md
+your-call: true
 ---
 Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 

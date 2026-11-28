@@ -701,7 +701,7 @@
             text = injectAnchorSentinels(text, entry.anchors);
         }
         var fence = '```\n' + text + '\n```';
-        return label + '\n\n' + keyComment(entry && entry.key) + calloutComment(entry && entry.callouts) + fence;
+        return label + '\n\n' + keyComment(entry && entry.key) + calloutComment(entry && entry.callouts) + yourCallComment(entry) + fence;
     }
 
     // The prompt's registry key rides with its block as one HTML comment, the
@@ -725,6 +725,14 @@
             .map(function (c) { return { at: String(c.at), say: String(c.say) }; });
         if (!list.length) return '';
         return '<!--prompt-callouts ' + JSON.stringify(list).replace(/--/g, '\\u002d\\u002d').replace(/>/g, '\\u003e') + '-->\n\n';
+    }
+
+    // `your-call: true` in a prompt's frontmatter marks a prompt that waits for
+    // the learner's own judgment (the agent asks and waits, or the prompt ends
+    // on a line the learner fills in). Rides as a comment like the callouts;
+    // the Agents 101 self-study shell (prompt-short.js) shows it as a tag.
+    function yourCallComment(entry) {
+        return entry && entry['your-call'] === true ? '<!--prompt-your-call-->\n\n' : '';
     }
 
     // Replace every `{{runtime-map:<module-slug>}}` line with that module's
@@ -1118,6 +1126,40 @@
             wrap.appendChild(body);
 
             // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
+        });
+    }
+
+    // Look widget. Source shape (single paragraph):
+    //   **Look** <what to open, and one thing to find in it>
+    // Sits at the coming-back moment after a prompt whose result the learner
+    // has to see with their own eyes (a regenerated page, a report, a draft).
+    // Not a hazard (HOX), not general guidance (Note): the learner opens the
+    // result and looks. Same construction and boundary discipline as
+    // decorateNote; run in the same pass, before decoratePrompts.
+    function decorateLook(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'Look') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'look-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'look-block__badge';
+            badge.textContent = 'LOOK';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'look-block__body';
+            wrap.appendChild(body);
+
             strong.remove();
             var msg = document.createElement('p');
             msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
@@ -1550,6 +1592,7 @@
         decorateSessions: decorateSessions,
         decorateHox: decorateHox,
         decorateNote: decorateNote,
+        decorateLook: decorateLook,
         decorateTiming: decorateTiming,
         decoratePrompts: decoratePrompts,
         attachAnchorPopups: attachAnchorPopups,

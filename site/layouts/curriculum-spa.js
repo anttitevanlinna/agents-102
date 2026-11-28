@@ -268,6 +268,7 @@
                 CurriculumRuntime.decorateSessions(container);
                 CurriculumRuntime.decorateHox(container);
                 CurriculumRuntime.decorateNote(container);
+                CurriculumRuntime.decorateLook(container);
                 CurriculumRuntime.decorateTiming(container);
                 CurriculumRuntime.decoratePrompts(container);
                 CurriculumRuntime.decorateDiagramZoom(container);

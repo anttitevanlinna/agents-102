@@ -23,6 +23,22 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-28 — Agents 101 open edition, four days of calls (backfilled at thread close)
+
+**Counterweight: length is something to consider, not a cut order.** On the attention-design work Antti said page length is a UX matter, then, when a pass read that as licence to shorten: *"I did not say cut. I said consider."* The fix he took was a different shape of the same text: the handbook shows a squint of each long prompt with callouts on it, and Cowork holds the full prompt. The text stayed; what the eye meets first changed.
+
+**Counterweight: the solo edition kept its between-sittings steps.** Now `check_pedagogy.md` §39; *"that stuff was there for a reason"*.
+
+**A failed rewrite of a slide line.** *"The same question. Two answers."* was rewritten with a verb for a slide pass. Antti: *"not better or shorter"*. A slide line changes only when the edit is clearly better and not longer.
+
+**The student's word, not ours.** *"three lines"* became *"these three things"* in the prework note and the solo brief: the learner had not written lines, they had named things. *"beats"* became *"steps"* in the challenge memory exercise: *"steps is what student would call them"*.
+
+**Callouts sit on the prompt, never inside it.** A callout set in the prompt box's own type would *"feel like part of the prompt"*; a full-width band means the *"prompt breaks up"*. What he accepted: white cards in body type, narrower than the grey box, laid on it.
+
+**Judge the line as it stands.** *"???? note old was bad too"*: a new line is not good because it beats the old one. Now `check_student_facing.md` §41.
+
+---
+
 ## 2026-11-28 — Agents 101 open edition, problem-areas review
 
 Rule behind most calls: `check_student_facing.md` §40. These are the calls beside it.

@@ -8,7 +8,7 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { createHash } = require('node:crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const { retitleTrainerDemos, WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
+const { retitleTrainerDemos, dropSlidesSaidByCallouts, WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
 const { renderCourseNavigation, COURSE_READING_CUE, EXTRACTION_BOOTSTRAP } = require('./a101-mvp-navigation.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -48,6 +48,20 @@ test('open edition keeps the trainer demos without the Demo label', () => {
   const page = '<a>Demo: 1st scheduled agent</a><h1>Demo: 1st scheduled agent</h1><p>Body.</p><h1>Demo: Agent that takes action</h1>';
   assert.equal(retitleTrainerDemos(page), '<a>1st scheduled agent</a><h1>1st scheduled agent</h1><p>Body.</p><h1>Agent that takes action</h1>');
   assert.throws(() => retitleTrainerDemos('<p>No demos.</p>'), /Trainer demo missing/);
+});
+
+test('self-study leaves out a slide only when callouts on its prompt say the same', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'a101-callouts-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'with.md'), '---\nkey: with\ncallouts:\n  - at: Read\n    say: Why.\n---\nRead it.\n');
+    fs.writeFileSync(path.join(dir, 'without.md'), '---\nkey: without\n---\nRead it.\n');
+    const page = '<section class="module" id="m"><h2 id="a">Keep</h2><p>One.</p><h2 id="b">Said by callouts</h2><p>Two.</p><p>Three.</p><h2 id="c">After</h2><p>Four.</p></section><section class="module" id="n"><h2 id="d">Next</h2></section>';
+    const slides = [{ module: 'm', slide: 'Said by callouts', prompt: 'with' }];
+    assert.equal(dropSlidesSaidByCallouts(page, slides, dir), page.replace('<h2 id="b">Said by callouts</h2><p>Two.</p><p>Three.</p>', ''));
+    assert.throws(() => dropSlidesSaidByCallouts(page, [{ ...slides[0], prompt: 'without' }], dir), /carries none/);
+    assert.throws(() => dropSlidesSaidByCallouts(page, [{ ...slides[0], slide: 'Gone' }], dir), /missing from m/);
+    assert.throws(() => dropSlidesSaidByCallouts(page, [{ ...slides[0], module: 'n' }], dir), /missing from n/);
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
 test('edition loader framing patches exactly two claims and fails on upstream drift', () => {
@@ -144,6 +158,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     run(first);
     const trainingDir = path.join(first, 'acme-mvp/agents-101');
     const html = fs.readFileSync(path.join(trainingDir, 'index.html'), 'utf8');
+    assert.match(html, />The review checks handoffs, not truth<\/h2>/, 'trainer-led editions keep the slide: they show no callouts');
     const exceptions = [];
     const copied = [];
     const virtualConsole = new VirtualConsole();
@@ -428,6 +443,8 @@ test('open edition: Modules 1 to 6 plus the solo module at its own address, lice
       assert.equal(doc.body.getAttribute('data-prompt-view'), 'short', 'self-study shows long prompts in short');
       assert.equal(doc.body.getAttribute('data-prompt-copy-label'), 'Copy prompt');
       assert.ok(doc.querySelector('script[data-a101-prompt-short]'), 'prompt-short.js rides in the self-study page');
+      assert.doesNotMatch(doc.getElementById('multi-agent-systems').textContent, /The review checks handoffs, not truth/, 'callouts on the debrief prompt say it in self-study');
+      assert.match(html, /prompt-callouts \[\{"at":"Read","say":"This review checks the handoffs\./);
     } finally { dom.window.close(); }
     assert.doesNotMatch(html, /clients\/(?:open|acme-mvp)\/|ACME/);
     for (const name of ['mac-folder-picker.mp4', 'mac-folder-picker.jpg']) assert.ok(fs.existsSync(path.join(out, 'media', name)));

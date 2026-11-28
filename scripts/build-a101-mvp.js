@@ -150,6 +150,29 @@ function promptsInShort(html) {
   return html.replace(tag, '<body data-prompt-view="short" data-prompt-copy-label="Copy prompt" class="$1"');
 }
 
+// Self-study only: where the callouts on a prompt carry a slide's point, the
+// slide leaves the page (maintainer 2026-11-28, one slide per call). Trainer-led
+// editions show prompts in full, without callouts, and keep the slide. The
+// build fails when the slide is gone from the module or the prompt has no
+// callouts, so neither side can drop out unnoticed.
+const SLIDES_SAID_BY_CALLOUTS = [
+  { module: 'multi-agent-systems', slide: 'The review checks handoffs, not truth', prompt: 'a101-m3-debrief-handoff-rules' },
+];
+function dropSlidesSaidByCallouts(html, slides = SLIDES_SAID_BY_CALLOUTS, promptDir = path.join(ROOT, 'curriculum/prompts')) {
+  for (const { module, slide, prompt } of slides) {
+    const frontmatter = fs.readFileSync(path.join(promptDir, prompt + '.md'), 'utf8').split(/\n---\n/)[0];
+    if (!/^callouts:/m.test(frontmatter)) throw new Error(`Slide "${slide}" is left out for callouts, but prompt ${prompt} carries none`);
+    const start = html.indexOf(`<section class="module" id="${module}">`);
+    const end = start < 0 ? -1 : html.indexOf('<section class="module"', start + 1);
+    const head = start < 0 ? -1 : html.indexOf(`>${slide}</h2>`, start);
+    const open = head < 0 ? -1 : html.lastIndexOf('<h2', head);
+    const next = head < 0 ? -1 : html.indexOf('<h2', head);
+    if (open < start || next < 0 || (end > 0 && next > end)) throw new Error(`Slide to leave out is missing from ${module}: ${slide}`);
+    html = html.slice(0, open) + html.slice(next);
+  }
+  return html;
+}
+
 function retitleTrainerDemos(html) {
   for (const title of TRAINER_DEMOS) {
     const count = html.split(`Demo: ${title}`).length - 1;
@@ -538,7 +561,7 @@ ${SETUP_CSS}
 })();
 </script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n${edition.open ? `<script data-a101-prompt-short>\n${shell('prompt-short.js')}\n</script>\n` : ''}</body>`);
 
-    if (edition.open) html = promptsInShort(hideVideoPlaceholders(addModuleTimes(addLicenceLine(retitleTrainerDemos(html)), modules)));
+    if (edition.open) html = promptsInShort(hideVideoPlaceholders(addModuleTimes(addLicenceLine(retitleTrainerDemos(dropSlidesSaidByCallouts(html))), modules)));
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     if (edition.hub) fs.writeFileSync(path.join(customerDir, 'index.html'), `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ${edition.brand}</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n`);
@@ -577,4 +600,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { dropModuleOnePrework, retitleTrainerDemos, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };
+module.exports = { dropModuleOnePrework, retitleTrainerDemos, dropSlidesSaidByCallouts, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

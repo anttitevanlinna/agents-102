@@ -12,6 +12,11 @@ produces:
   - id: root-instructions
     location: "./{{artifact:root-instructions}} (integrate in place)"
     note: sharpens division-of-work + handoff rules on the M2 file
+callouts:
+  - at: Read
+    say: This review checks the handoffs. It does not check whether the briefing is right.
+  - at: Then tell me in three to five lines
+    say: Asking for the file and what was lost keeps the review from turning polite.
 ---
 Read {{artifact:root-instructions}} at the root, then what this session produced in agents/, sources/ and module-3/. Look at how the agents worked together: where one agent redid or overwrote another's work, where something a retriever found never reached the briefing, and where the three stances ended up saying the same thing.
 

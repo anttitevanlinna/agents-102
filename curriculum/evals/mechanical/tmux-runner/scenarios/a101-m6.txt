@@ -1,7 +1,7 @@
 # Agents 101 Module 6 — Eval loop (the fixed-judge generation loop).
 # Driven by run-a101.sh --module m6. FRESH session, run AFTER m5 (consumes
 # ./crux.md, memory/, and the M5-authored judges/groundedness-judge.md — none
-# seeded). Persona answer tokens: M6_SPOT_MARKS, M6_GOAL_NUDGER.
+# seeded). Persona answer tokens: M6_REMARKS, M6_SPOT_MARKS, M6_GOAL_NUDGER.
 #
 # Gating turns: eval-loop-1 (round 0 on the frozen M3 briefing + tactic) →
 # eval-loop-2 (the loop) → eval-loop-5 (readout) → spot-check → debrief → goal-nudger
@@ -18,8 +18,9 @@
 # T1 — round 0: the judge on the frozen M3 briefing, then generation-tactic.md.
 eval-loop-1 <CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> Write the files and show the per-claim judge readout directly.
 
-# T2 — the loop: >=3 rounds, fixed judge, rewrite the tactic each round.
-eval-loop-2 <CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> Run the rounds and write the files directly without stopping for confirmation between rounds. Bound it: cap at 4 rounds even if you would otherwise continue, and record that the cap (not convergence) stopped it if so.
+# T2 — the loop: >=3 rounds, fixed judge, rewrite the tactic each round. The prompt stops once after
+# round 1 for remarks; the persona gives them up front so the run does not wait.
+eval-loop-2 <CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> <M6_REMARKS> Use these remarks at the stop after round 1 instead of waiting for me, and run the remaining rounds without stopping. Bound it: cap at 4 rounds even if you would otherwise continue, and record that the cap (not convergence) stopped it if so.
 
 # T3 (prompt -5) — readout (chat, 5 bullets).
 eval-loop-5 <CONTROL:NO_QUESTIONS> Show the five bullets directly.
@@ -33,6 +34,6 @@ a101-m6-debrief-tactic-sharpen
 # T6 — closing lecture: the goal-nudger for the briefing, saved as ./goal-nudger-eval.md.
 new-human-role-in-the-loop-1 <CONTROL:NO_QUESTIONS> <CONTROL:SAVE_WITHOUT_REVIEW> <M6_GOAL_NUDGER>
 
-# T7 — take-home: the same loop on the briefing, goal-nudger as judge, groundedness judge still checking.
-# The page runs T6-T7 before the debrief; here they follow it, so the loop copies the sharpened tactic.
+# T7 — take-home: the same loop on the briefing, goal-nudger as a second judge, groundedness judge still checking.
+# The page runs T6-T7 before the debrief; here they follow it, so the second loop keeps rewriting the sharpened tactic.
 eval-loop-6 <CONTROL:DIRECT_EXECUTION> <CONTROL:MULTI_AGENT> Run the rounds without stopping for confirmation. Bound it: cap at 4 rounds even if you would otherwise continue.

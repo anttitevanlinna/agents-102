@@ -1,15 +1,15 @@
 ## Steering raises the ceiling
 <!--slide:steering-raises-the-ceiling-->
 
-Two mails both stay grounded. One is forgettable. The other makes the reader act.
+Two briefings both stay grounded. One is forgettable. The other makes the reader act.
 
-The better mail names the tradeoff and gives a clear next move.
+The better briefing names the tradeoff and gives a clear next move.
 
 A goal-nudger is a check for that quality: it scores each output on the quality you chose.
 
 Groundedness protects the floor. Steering raises the ceiling.
 
-A grounded mail can still be useless, so you need both.
+A grounded briefing can still be useless, so you need both.
 
 <!-- maintainer -->
 

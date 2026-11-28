@@ -12,9 +12,9 @@ callouts:
   - at: Once the dimension is clear
     say: Examples at 5, 3 and 1 anchor the scale better than a definition.
 ---
-Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
+Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality my team needs from the briefing and pushes the agent toward it.
 
-Groundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.
+Groundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on that one quality.
 
 Ask me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:
 

@@ -26,8 +26,8 @@ callouts:
     say: The writer and the judge are separate agents. The judge sees only the briefing.
   - at: When the loop stops
     say: This is what you read when you come back.
-  - at: Do not stop
-    say: The loop keeps running while you are away.
+  - at: After round 1, stop
+    say: Round 1 is where your own read joins the loop. After it, the loop runs while you are away.
 ---
 Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
@@ -55,4 +55,4 @@ When the loop stops:
   - one human decision still needed
 - In chat, show me the same summary in under 12 lines.
 
-Do not stop for confirmation between rounds.
+After round 1, stop and ask me for remarks on its briefing. Add them to ./remarks.md, then run the remaining rounds without stopping.

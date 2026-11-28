@@ -141,6 +141,7 @@ M4_GUESS="$(cat "$ANSWERS/m4-guess.txt")"
 M5_MARKS="$(cat "$ANSWERS/m5-marks.txt")"
 M5_DOUBT_ANSWER="$(cat "$ANSWERS/m5-doubt-answer.txt")"
 M6_SPOT_MARKS="$(cat "$ANSWERS/m6-spot-marks.txt")"
+M6_REMARKS="$(cat "$ANSWERS/m6-remarks.txt")"
 M7_RECIPIENT=''
 M7_ASSUMPTIONS=''
 if a101_case_supports_module m7; then
@@ -182,6 +183,7 @@ subst() {
   body="${body//<M5_MARKS>/$M5_MARKS}"
   body="${body//<M5_DOUBT_ANSWER>/$M5_DOUBT_ANSWER}"
   body="${body//<M6_SPOT_MARKS>/$M6_SPOT_MARKS}"
+  body="${body//<M6_REMARKS>/$M6_REMARKS}"
   body="${body//<M7_RECIPIENT>/$M7_RECIPIENT}"
   body="${body//<M7_ASSUMPTIONS>/$M7_ASSUMPTIONS}"
   body="${body//<SOLO_PERSON>/$SOLO_PERSON}"
@@ -595,6 +597,7 @@ assert_turn() {
       done
       assert_file_mtime_advanced "m6 T2 generation-tactic rewritten" "$sut_cwd/generation-tactic.md" "$base" || return 1
       assert_file_exists "m6 T2 eval-notes" "$sut_cwd/module-6/eval-notes.md" || return 1
+      assert_or_warn assert_file_exists "m6 T2 round-1 remarks saved" "$sut_cwd/remarks.md"
       assert_scrollback_grep "m6 T2 eval-notes has SHA + trajectory" "$sut_cwd/module-6/eval-notes.md" 'SHA|sha|identical|trajector|flag|round' || return 1
       # Judge immutability (runner-level, SHA): unchanged since m6:1 stash.
       if [[ -f "$run_dir/judge.sha" ]]; then
@@ -660,13 +663,14 @@ assert_turn() {
       goal_rounds="$(find "$sut_cwd/module-6/goal-loop" -type d -name 'round-[1-9]*' 2>/dev/null | wc -l | tr -d ' ')"
       [[ "$goal_rounds" -ge 3 ]] || { echo "[assert] FAIL m6 T7: goal loop has $goal_rounds rounds after round 0 (want >=3)" >&2; return 1; }
       assert_file_exists "m6 T7 goal loop notes" "$sut_cwd/module-6/goal-loop/notes.md" || return 1
+      assert_file_mtime_advanced "m6 T7 second loop rewrote the same rules file" "$sut_cwd/generation-tactic.md" "$base" || return 1
       if [[ -f "$run_dir/nudger.sha" ]]; then
         [[ "$(shasum "$sut_cwd/goal-nudger-eval.md" | awk '{print $1}')" == "$(cat "$run_dir/nudger.sha")" ]] || { echo "[assert] FAIL m6 T7: goal-nudger-eval.md changed during the loop" >&2; return 1; }
       fi
       if [[ -f "$run_dir/judge.sha" ]]; then
         [[ "$(shasum "$sut_cwd/judges/groundedness-judge.md" | awk '{print $1}')" == "$(cat "$run_dir/judge.sha")" ]] || { echo "[assert] FAIL m6 T7: judge file changed during the goal loop" >&2; return 1; }
       fi
-      echo "[assert] PASS m6 T7: goal loop ran >=3 rounds, both judge files unchanged" ;;
+      echo "[assert] PASS m6 T7: goal loop ran >=3 rounds on ./generation-tactic.md, both judge files unchanged" ;;
 
     # ----- m7 -----
     m7:1)

@@ -220,7 +220,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** A fixed judge turns human judgment into repeatable steering while the generation tactic learns across rounds.
 
-**Room cues.** Fresh session at the training root. The debrief sharpens the tactic without touching the judge. Close on the core close, or the M7 handoff.
+**Room cues.** Fresh session at the training root. The loop stops once after round 1 for remarks: keep the room for that read, then walk away. The debrief sharpens the tactic without touching the judge. Close on the core close, or the M7 handoff.
 
 **Mood.** Unleashed leverage: *"The loop can keep pressure on the work while I design the yardstick and boundaries."* Check: the student celebrates score improvement without showing what changed, or the judge moved with the generator. Fix: compare the judge hash and quote one tactic rule added from one piece of judge feedback.
 
@@ -232,6 +232,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 - Judge changes between rounds → *"Restore the original judge before comparing scores. A moving yardstick voids the trajectory."*
 - Tactic rewrite is generic → *"Which per-claim feedback produced this rule? Quote both."*
 - Debrief congratulates the loop → *"Which judge finding never made it into the tactic, and why?"*
+- Second loop's score rose with a flagged claim → *"Which claim did the higher score cost? The groundedness judge keeps the floor."*
 
 **Watch-fors and recovery.** If the M5 judge is absent, the student must run the missing M5 judge-build on their own material; do not loan a synthetic judge and pretend the compound is intact. A stalled round may be nudged, but preserve the round trail and label the intervention. M6 is a complete ending for the six-module core: land the human's higher-level role without implying blind trust. If M7 follows, close on whether the loop should stay personal.
 

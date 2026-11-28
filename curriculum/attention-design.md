@@ -97,9 +97,9 @@ Page with the measures and the step shown both ways: https://claude.ai/artifact/
 **Back to the handbook.** Leaving for the agent is one Copy; coming back after a wait is the weak handoff. The learner tells the agent "Back to the handbook" and gets one line on what they last did and a link to that prompt (Antti 2026-11-28: *"option 2 is clearly the best"*, *"make sure these are auto-generated from sources. build it to last"*).
 
 - Address: every prompt block carries its registry key as a comment (`renderPromptBlock`, `site/layouts/curriculum.js`); `curriculum/delivery/agents-101-mvp/shell/prompt-places.js` gives the block the chosen runtime shows the id `p-<key>`.
-- Agent: `course-navigation.md` in the starter saves the place after every course prompt in `prework/learning-position.md` (the prompt's file in `prompts/` gives the key) without saying so, and answers the phrase with that link. Prework step 3 teaches the phrase.
+- Agent: `course-navigation.md` in the starter saves the place after every course prompt in the learner's position note (the prompt's file in `prompts/` gives the key) without saying so, and answers the phrase with that link. Prework step 3 teaches the phrase.
 - Lasting: `checkPromptPlaces` in `scripts/build-a101-mvp.js` fails the build when the starter's `prompts/` and the page's keys differ. Tests: `scripts/prompt-places.test.js`.
-- Open: Cowork loading the folder's `CLAUDE.md` is unobserved; a Claude Code run passed in the same and in a new conversation. A page-side button (`shell/return-marker.js`) is built and not switched on.
+- Open: Cowork loading the folder's `CLAUDE.md` is unobserved; a Claude Code run passed in the same and in a new conversation. A page-side button (`curriculum/delivery/agents-101-mvp/shell/return-marker.js`) is built and not switched on.
 
 ## Glancing at a prompt
 

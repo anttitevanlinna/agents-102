@@ -23,19 +23,19 @@ Rule context: `check_pedagogy.md` §16 puts forcing functions in prompts and let
 
 ## Map, open edition, built page 2026-11-28 (main 73aa869)
 
-One reader's count of judgment moments. Input moments are left out.
+One reader's count of judgment moments. Input moments are left out. The Module 1 row is counted again after the Module 1 makeover (main 1c27862): the belief, the look-back and the cold read now wait for the learner.
 
 | unit | gated | page-only | free |
 |---|---|---|---|
 | prework | 0 | 1 (ask for changes to the five-line summary) | 0 |
-| 1 Getting Going | 1 (what changed the page most, P5) | 4 (harsher picks, push back on rules, push back on the retro, cold read against your own view) | 1 (Phase 6) |
+| 1 Getting Going | 3 (pick or reword one of three belief versions P3, what changed the page most P5, own two picks before the cold critic) | 3 (harsher picks, push back on rules, push back on the retro) | 1 (Phase 6) |
 | 2 Building Agent Systems | 3 (plan approval P5, change one starter rule P7, approve or reject each fix P10) | 7 (brief, curation plan, sharper not longer, bare vs system, Debrief, week of watching, brand rule) | 0 |
 | 3 Multi-Agent Systems | 1 (doubted line P10) | 4 (crux restates, decision restates, dropped or smoothed number, Debrief) | 0 |
 | 4 Security | 3 (guess P4, what matters P6, the risk P11) | 5 (GDPR brochure, four patterns covered, accept the residual on record, ask a person, Debrief) | 0 |
 | 5 Catching Hallucinations | 3 (five marks P4, surprise row P7, still doubt it P9) | 1 (Debrief) | 0 |
 | 6 Evaluations | 2 (three marks P6, goal-nudger P8) | 3 (remarks after round 1, Debrief and the removal check, five trigger moments) | 0 |
 | solo Agents Building Agents | 1 (the person, P1) | 2 (the four-line brief, give it to them) | 0 |
-| all | 14 | 27 | 1 |
+| all | 16 | 26 | 1 |
 
 Deliberate hand-backs, not gaps: Module 3 P9 *You choose fixes*, Module 4 *"You choose. Optimise for what I can't steer."* The learner delegates on purpose.
 
@@ -43,7 +43,7 @@ Deliberate hand-backs, not gaps: Module 3 P9 *You choose fixes*, Module 4 *"You 
 
 | module | Big Idea done by | gated? |
 |---|---|---|
-| 1 | what changed the page most, in the learner's words, last line of `context-trace.md` | yes |
+| 1 | what changed the page most, in the learner's words, last line of `context-trace.md`, asked with the first and current site side by side | yes |
 | 2 | approve or reject each memory fix | yes |
 | 3 | *handoffs are where work gets lost, so check them*: the dropped or smoothed number | **no, page-only** |
 | 4 | guess, then the risk; *decide*, accept the residual on record | half: the decision is page-only |

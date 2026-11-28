@@ -53,7 +53,7 @@ Open edition, Modules 1 to 6, Cowork profile, 720 by 800 pixels. Measured 2026-1
 
 `node curriculum/evals/scripts/attention-load.js --modules getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations`
 
-| module | stated min | handbook words | min at 200 wpm | prompts | prompt words | screens | screens, long prompts folded | file names in text |
+| module | stated min | handbook words | min at 200 wpm | prompts | prompt words | screens | screens, prompts cut at eight lines | file names in text |
 |---|---|---|---|---|---|---|---|---|
 | 1 Getting Going | 80 | 2,102 | 11 | 8 | 818 | 16.9 | 15.8 | 6 |
 | 2 Building Agent Systems | 90 | 3,276 | 16 | 16 | 1,903 | 26.9 | 23.8 | 16 |
@@ -75,21 +75,27 @@ What the measures say: handbook text in total is near the module limit in four o
 
 A module is 17 to 27 screens beside the agent. Prompt boxes carry no number and show every line.
 
-Sketch, not built: label each prompt with its place in the module (*Prompt 4 of 9*) and fold a prompt longer than eight lines to its first lines, with Copy still taking all of it. Six modules go from 122 screens to 103 and no word changes. Module 6, Phase 2 goes from 2.5 screens to 1.2, and the line that says what to do while the loop runs comes into view at Copy.
+Sketch, not built: label each prompt with its place in the module (*Prompt 4 of 9*) and give a prompt longer than eight lines the glance view below. Module 6, Phase 2 goes from 2.5 screens to 1.8 with four notes on the prompt.
 
 Page with the measures and the step shown both ways: https://claude.ai/artifact/AvNMCXwk1wg17ScN1rx6on
 
-## A prompt is written for the agent
+## Glancing at a prompt
 
 *"I need to find a way to tell solo students they don't need to read the prompts word-to-word. Or find some UX for that."* (Antti 2026-11-27)
 
-A prompt box that shows 50 lines in code type asks to be studied. In a room the trainer says "just copy it". For a solo learner the page says it, at the box, every time. Sketch, not built:
+**The stance** (Antti 2026-11-28): *"glance at it. check what seems pertinent in more detail. No need to study all detail."* The learner reads a prompt the way a manager reads a brief someone else wrote. A prompt box that shows 50 lines in code type asks to be studied; in a room the trainer says "just copy it"; for a solo learner the box has to make glancing possible.
 
-- **The fold carries the message.** A prompt longer than eight lines shows its first lines, then: *The rest is detail for the agent. Show all 50 lines.* 51 of 68 prompts fold; 17 short ones stay open, and those are worth reading because a person could say them.
-- **Copy is the main action.** *Copy prompt* takes the whole prompt. The learner sees the full text on pasting it.
-- **Said once in the prework**, in the course's voice: *A prompt is written for the agent. Read the line above it, copy it, and read what the agent answers.*
+Sketch, not built. Three layers:
 
-Consequence for the text: the sentence above the prompt carries the ask, since it is the part the learner reads. 34 of 68 prompts open with a sentence that says what is asked (one reader's count); the others open with background, a role, a file to read or a control line. A first sentence that states the ask is a prompt change and goes through the prompt gate.
+- **Glance view, automatic, every prompt longer than eight lines.** The box shows the first sentence of each part (each paragraph, each top-level list item). A plus sign opens that part; *Show all N lines* opens everything; *Copy prompt* is the main button and takes the whole prompt. No authoring. 51 of 68 prompts qualify; 17 short ones stay open. Prompt text in view on the 51 goes from 8,393 words to 4,117; the six modules go from 122 screens to 109.
+- **Notes on areas, written, only where there is a why.** *"Each prompt splits into areas. Each area might be commented in few words to call out what and why of the shape / instruction."* (Antti 2026-11-28) Working limits, the author's judgment: a note says why a part is there, never what it says (the line says what); three or four notes a prompt; about twelve words each; an area with no why gets no note. Notes are not copied. Example, the Module 6 loop prompt: *The judge stays fixed, so a better score means better work.* · *The writer and the judge are separate agents. The judge sees only the briefing.* · *This is what you read when you come back.* · *The loop keeps running while you are away.* Its two areas of file paths and folders carry none.
+- **Said once in the prework:** *Glance at each prompt. Check what seems pertinent in more detail. No need to study all the detail.*
+
+**Notes replace text.** A passage that explains a prompt from outside the prompt sits a screen away from the line it explains. Modules 1 to 6 hold three: the Module 3 Debrief (*"The prompt asks the agent for a harsh review…"*), the Module 5 slide *Notice what the prompt insists on*, and *How the loop works* in the Module 6 exercise, about 160 words together. As notes they sit on their lines.
+
+**Named moves stay out of Agents 101.** `trainings/agentic-engineering-101/reference/prompt-anatomy.md` names 33 prompt moves; the renderer can open one in a popup from an `anchors:` entry in a prompt's frontmatter. No Agents 101 prompt carries anchors. A name for a move is one more thing to hold; a plain note on the line does the job for this audience.
+
+The sentence above the prompt carries the ask. 34 of 68 prompts open with a sentence that says what is asked (one reader's count); the others open with background, a role, a file to read or a control line. A first sentence that states the ask is a prompt change and goes through the prompt gate.
 
 ## Open
 

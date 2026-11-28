@@ -4,7 +4,7 @@ Scope: a solo learner opens the public home page, starts the course, makes the f
 
 | Instrument | Answers | Runner |
 |---|---|---|
-| Path read (simulation) | How many solo learners reach Module 1, where they slow down, and what they carry away cold: the course promise, the licence, the first step of Module 1. | `path-read.js` |
+| Path read (simulation) | How far solo learners get toward Module 1, where they slow down, and what they carry away cold: the course promise, the licence, the first step of Module 1. | `path-read.js` |
 | Visual rubric | Whether the rendered pages show the route at 1440 × 900 and in a 421 × 698 pane beside Claude. Mechanical gates plus a critic's scores. | `path-visual.js` |
 
 Neither instrument judges language. A good score never means the text reads well. Language is checked by a person and the voice gates.
@@ -22,13 +22,13 @@ Ten fixed personas (`journey-personas.json`) read the home page and the handbook
 | briefing | makes the meeting summary and reads what makes this an agent |
 | module-1 | finds Module 1 and knows its first step |
 
-Scores are 0 to 100: yes counts 1, uncertain 0.5, no 0. **Reach Module 1** is the headline number: each reader counts at their weakest stage, so a reader unsure at setup counts 0.5 even if they find Module 1 later. Stars per stage and the quoted friction are the steering evidence.
+Scores are 0 to 100, on the same scale as the module scores: a stage's score is the share of readers through it (yes counts 1, uncertain 0.5, no 0), and the headline **score** is the mean of the six stages, as a module's number is a mean over its students. Every report also names the **lowest stage**, and keeps **strict reach** (the headline until 2026-11-28: each reader counted at their weakest stage, so a reader unsure at setup counts 0.5 even if they find Module 1 later). Stars per stage and the quoted friction are the steering evidence.
 
-**Release goal:** reach Module 1 at least 85, every stage at least 80, licence at least 80, Module 1 first step at least 70, no persona quits before Module 1 in both reads.
+**Release goal:** score at least 90 with no stage under 80, licence at least 80, Module 1 first step at least 70, no persona quits before Module 1 in both reads.
 
-**Noise.** At 20 reads one reader moves a stage by 2.5 to 5 points. Like the full-training system, the number only steers moves of 20 points or more. For a smaller change, read the quotes. The calibration below is the check that the instrument sees damage at all.
+**Noise.** At 20 reads one reader moves a stage by 2.5 to 5 points. Between reads of near-identical builds a stage moved 10 to 15 points (setup 80 to 93, Module 1 75 to 88) and the score about 3 (control page 90 and 90, placebo 90; main builds 92 to 95). Four stages sit at 100 on every build since the new home page, so a break at one stage moves the score by a sixth of its size: removing Continue to Module 1 took that stage from 95 to 55 and the score from 90 to 83. So read the score for breaks across the path and the stage row for a break at one place; on a stage, as in the full-training system, only moves of 20 points or more steer. For a smaller change, read the quotes. The calibration below is the check that the instrument sees damage at all.
 
-**Calibration** (`node path-read.js --calibrate --workbook <handbook>`): a fixed control home page (`path-controls/home-control.html`) in front of the handbook, then four copies. Removing the start link must drop reach by 20 or more. Removing the licence line must drop licence by 20 or more. Removing Continue to Module 1 and its links must drop reach or the Module 1 step by 20 or more. A neutral added sentence must stay within 20 on every score. Run it after any change to the question, personas, targets or view extraction.
+**Calibration** (`node path-read.js --calibrate --workbook <handbook>`): a fixed control home page (`path-controls/home-control.html`) in front of the handbook, then four copies. Removing the start link must drop the score by 20 or more. Removing the licence line must drop licence by 20 or more. Removing Continue to Module 1 and its links must drop the score, the Module 1 stage or the Module 1 step by 20 or more. A neutral added sentence must stay within 20 on every score. Run it after any change to the question, personas, targets or view extraction.
 
 ## Visual rubric
 
@@ -53,7 +53,7 @@ Fixed states: home first viewport; handbook entry; step 1, the first request; st
 | Route to Module 1 | The learner can see where they are in the five steps, and Continue to Module 1 leads to a Module 1 start with one clear first step. |
 | Layout | Recognizable character, clear type scale, comfortable line length; home and handbook feel like one product in both widths. |
 
-**AAA** = all gates pass, 23 or more, every dimension at least 3. **AA** = all gates pass, 20 or more. Record the state, the visible element and what it costs the learner for every deduction. Keep these criteria fixed while iterating. The critic is Sonnet, and its verdict is a second opinion, not proof; the proto's earlier AAA came from an independent critic and is not comparable with these scores.
+**AAA** = all gates pass, 23 or more, every dimension at least 3. **AA** = all gates pass, 20 or more. **A** = all gates pass, 16 or more. Reports also give the total on 0 to 100 (points × 100 / 24) to read beside the other scores: A starts at 67, AA at 83, AAA at 96. Record the state, the visible element and what it costs the learner for every deduction. Keep these criteria fixed while iterating. The critic is Sonnet, and its verdict is a second opinion, not proof; the proto's earlier AAA came from an independent critic and is not comparable with these scores.
 
 ## Results
 

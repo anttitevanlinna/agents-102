@@ -2,6 +2,37 @@
 
 Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads Sonnet, 20 per row (10 personas × 2) unless noted. Raw reads stay under ignored `out/`. None of these scores says anything about the quality of the language.
 
+Since 2026-11-28 the headline is the **score**: the mean of the six stages, on the same scale as the module scores. Sections below that date report **strict reach** (each reader at their weakest stage) as "Reach"; the first table re-bases every run.
+
+## 2026-11-28: every run on the modules' scale
+
+No new reads. Recomputed from the stored reads with `path-read.js --resummarize`; the four live-prompt rows (branch claude/project-thread-pb7ywr, not on main) from their published stage scores, so within 1 point. Visual scores out of 24 shown on 0 to 100 too.
+
+| Version | Score | Lowest stage | Strict reach (old headline) |
+|---|---:|---|---:|
+| Today's live landing (bosser.consulting/training) + ACME handbook | **53** | start 38 | 33 |
+| Control home + ACME handbook (calibration v0, two runs) | 90, 90 | setup 68, 73 | 63, 58 |
+| Calibration: start link removed | 17 | start 0 | 0 |
+| Calibration: licence line removed (licence 100 to 3) | 89 | briefing 70 | 58 |
+| Calibration: Continue to Module 1 removed | 83 | Module 1 55 | 53 |
+| Calibration: one neutral sentence added | 90 | setup 73 | 63 |
+| New home + open edition (main 0653e8a) | **89** | briefing 70 | 58 |
+| Home fixes (main af58829) | 89 | briefing 60 | 53 |
+| Step 5 and Module 1 opening (main 45cd329) | **95** | setup 85 | 78 |
+| Draft A: course files by curl, 401 line (not on main) | 93 | setup 75 | 65 |
+| Draft B: Draft A without the 401 line (not on main) | 97 | Module 1 88 | 80 |
+| Draft C: Draft B plus Module 1 start line (not on main) | 97 | setup 83 | 80 |
+| Handbook shell fixes (main 0184e87) | 93 | setup 80 | 65 |
+| Cards 1 to 3 (main 6aca3ce) | **92** | Module 1 75 | 68 |
+| Live-prompt branch: old home, same handbook | 94 | Module 1 75 | 73 |
+| Live-prompt branch: "what's stuck at work?" entry | 93 | Module 1 75 | 68 |
+| Live-prompt branch: after the design review | 95 | Module 1 78 | 70 |
+| Live-prompt branch: header is the brand only, real input box | 96 | setup 85 | 80 |
+
+Visual on 0 to 100: 63 (15/24, first run on main), 71 (17/24), 75 (18/24, grade A, main 6aca3ce). Grade lines: A 67, AA 83, AAA 96.
+
+What the new scale shows: the release goal (score 90, no stage under 80) is met by 45cd329, by Drafts B and C and by the live-prompt branch's last version, and missed on main 6aca3ce by one stage, Module 1 at 75, inside that stage's 10 to 15 point spread between reads. The score moved about 3 points between repeat reads, where strict reach moved 15 (65 to 80). The cost: the score dilutes a break at one stage to a sixth (Module 1 bridge removed: stage 95 to 55, score 90 to 83), so read the stage row beside it.
+
 ## 2026-11-25: live-prompt entry (branch claude/project-thread-pb7ywr e70e248)
 
 | Version | Reach | arrive | start | first result | setup | briefing | Module 1 | promise | licence |

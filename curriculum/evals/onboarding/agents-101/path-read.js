@@ -214,16 +214,20 @@ function summarize(rows) {
     stars[s] = mean(rows.map(r => r.answer.stages[s].stars));
   }
   const take = k => pct(rows.filter(r => r.score).map(r => r.score[k]));
-  // A reader reaches Module 1 only as well as their weakest stage: uncertain anywhere caps them at 0.5.
-  const pathScore = pct(rows.map(r => Math.min(...STAGES.map(s => v[r.answer.stages[s].reached]))));
-  return { n: rows.length, pathScore, funnel, stars, promise: take('promise'), licence: take('licence'), m1First: take('m1First') };
+  // Headline on the modules' scale: each stage is the share of readers through it (unsure = half),
+  // and the score is the mean of the six stages, as a module's number is a mean over its students.
+  const score = pct(rows.map(r => STAGES.reduce((a, s) => a + v[r.answer.stages[s].reached], 0) / STAGES.length));
+  const lowest = STAGES.reduce((a, s) => funnel[s] < funnel[a] ? s : a, STAGES[0]);
+  // Strict reach (the headline until 2026-11-28): each reader counts at their weakest stage.
+  const strictReach = pct(rows.map(r => Math.min(...STAGES.map(s => v[r.answer.stages[s].reached]))));
+  return { n: rows.length, score, lowest, strictReach, funnel, stars, promise: take('promise'), licence: take('licence'), m1First: take('m1First') };
 }
 
 function report(label, opts, variant, rows, sum) {
   const L = [];
   L.push(`# ${label}`, '', `Home: ${opts.home || '(none, starts at the handbook)'} · Handbook: ${opts.workbook} · Variant: ${variant} · Reads: ${sum.n} (Sonnet)`, '');
-  L.push(`**Reach Module 1: ${sum.pathScore}** · Promise ${sum.promise} · Licence ${sum.licence} · Module 1 first step ${sum.m1First}`, '');
-  L.push('| Stage | Reach | Stars |', '|---|---:|---:|');
+  L.push(`**Score: ${sum.score}** (mean of the six stages) · Lowest stage ${sum.lowest} ${sum.funnel[sum.lowest]} · Strict reach ${sum.strictReach} · Promise ${sum.promise} · Licence ${sum.licence} · Module 1 first step ${sum.m1First}`, '');
+  L.push('| Stage | Score | Stars |', '|---|---:|---:|');
   for (const s of STAGES) L.push(`| ${s} | ${sum.funnel[s]} | ${sum.stars[s]} |`);
   L.push('', '## What slowed readers, per stage', '');
   for (const s of STAGES) {
@@ -277,18 +281,18 @@ async function runOne(opts, variant, label) {
 }
 
 // Calibration: a fixed control home page in front of the handbook, damaged on purpose.
-// Expected: no-start drops reach by 20+, no-licence drops licence by 20+, no-m1-bridge
-// drops module-1 reach or M1 first step, placebo stays within 20 of v0.
+// Expected: no-start drops the score by 20+, no-licence drops licence by 20+, no-m1-bridge
+// drops the module-1 stage or M1 first step by 20+, placebo stays within 20 of v0.
 async function calibrate(opts) {
   const base = { ...opts, home: opts.home || path.join(HERE, 'path-controls', 'home-control.html'), reps: opts.reps || 1 };
   const res = {};
   for (const v of ['v0', 'no-start', 'no-licence', 'no-m1-bridge', 'placebo']) res[v] = (await runOne(base, v, 'calibration ' + v)).sum;
   const gap = (v, k) => res[v][k] - res.v0[k];
   const checks = {
-    noStartDetected: gap('no-start', 'pathScore') <= -20,
+    noStartDetected: gap('no-start', 'score') <= -20,
     noLicenceDetected: gap('no-licence', 'licence') <= -20,
-    noBridgeDetected: Math.min(gap('no-m1-bridge', 'pathScore'), gap('no-m1-bridge', 'm1First'), res['no-m1-bridge'].funnel['module-1'] - res.v0.funnel['module-1']) <= -20,
-    placeboQuiet: ['pathScore', 'licence', 'm1First'].every(k => Math.abs(gap('placebo', k)) < 20),
+    noBridgeDetected: Math.min(gap('no-m1-bridge', 'score'), gap('no-m1-bridge', 'm1First'), res['no-m1-bridge'].funnel['module-1'] - res.v0.funnel['module-1']) <= -20,
+    placeboQuiet: ['score', 'licence', 'm1First'].every(k => Math.abs(gap('placebo', k)) < 20),
   };
   const file = path.join(HERE, 'out', 'path-calibration.json');
   fs.writeFileSync(file, JSON.stringify({ results: res, checks }, null, 2));

@@ -40,9 +40,13 @@ test('no-m1-bridge removes Continue to Module 1 and its links', () => {
   assert.doesNotMatch(view, /href="#getting-going"/);
 });
 
-test('reach counts each reader at the weakest stage', () => {
+test('score is the mean of the stages; strict reach counts each reader at the weakest stage', () => {
   const row = reached => ({ answer: { stages: Object.fromEntries(STAGES.map(s => [s, { reached: reached[s] || 'yes', stars: 4 }])) } });
-  const sum = summarize([row({}), row({ setup: 'uncertain' })]);
-  assert.strictEqual(sum.pathScore, 75);
+  const sum = summarize([row({}), row({ setup: 'uncertain' }), row({ setup: 'no', briefing: 'uncertain' })]);
+  assert.strictEqual(sum.funnel.setup, 50);
+  assert.strictEqual(sum.funnel.briefing, 83);
+  assert.strictEqual(sum.score, 89); // (100 + 100 + 100 + 50 + 83.3 + 100) / 6
+  assert.strictEqual(sum.lowest, 'setup');
+  assert.strictEqual(sum.strictReach, 50); // (1 + 0.5 + 0) / 3
   assert.strictEqual(sum.funnel['module-1'], 100);
 });
